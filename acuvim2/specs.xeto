@@ -1,0 +1,356 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   28 Feb 2025  Rick Jennings  Creation
+//
+
+// Device model for the Acuvim II Series Power Meter
+Acuvim2ElecMeter : AcElecMeter <abstract> {
+  points: {
+    elecAcFreqSensor: ElecAcFreqSensor {
+      modbusAddr: ModbusAddr { addr: "16384", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI1" }
+    }
+    elecL1NAcMagnitudeVoltSensor: ElecPhaseAcMagnitudeVoltSensor {
+      phaseVolt: "L1-N"
+      modbusAddr: ModbusAddr { addr: "16386", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI2" }
+    }
+    elecL2NAcMagnitudeVoltSensor: ElecPhaseAcMagnitudeVoltSensor {
+      phaseVolt: "L2-N"
+      modbusAddr: ModbusAddr { addr: "16388", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI3" }
+    }
+    elecL3NAcMagnitudeVoltSensor: ElecPhaseAcMagnitudeVoltSensor {
+      phaseVolt: "L3-N"
+      modbusAddr: ModbusAddr { addr: "16390", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI4" }
+    }
+    elecPhaseAvgAcMagnitudeVoltSensor: ElecPhaseAvgAcMagnitudeVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16392", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI5" }
+    }
+    elecL1L2AcMagnitudeVoltSensor : ElecLineAcMagnitudeVoltSensor {
+      lineVolt: "L1-L2"
+      modbusAddr: ModbusAddr { addr: "16394", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI6" }
+    }
+    elecL2L3AcMagnitudeVoltSensor: ElecLineAcMagnitudeVoltSensor {
+      lineVolt: "L2-L3"
+      modbusAddr: ModbusAddr { addr: "16396", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI7" }
+    }
+    elecL3L1AcMagnitudeVoltSensor: ElecLineAcMagnitudeVoltSensor {
+      lineVolt: "L3-L1"
+      modbusAddr: ModbusAddr { addr: "16398", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI8" }
+    }
+    elecLineAvgAcMagnitudeVoltSensor: ElecLineAvgAcMagnitudeVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16400", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI9" }
+    }
+    elecL1AcMagnitudeCurrentSensor: ElecLineAcMagnitudeCurrentSensor {
+      lineCurrent: "L1"
+      modbusAddr: ModbusAddr { addr: "16402", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI10" }
+    }
+    elecL2AcMagnitudeCurrentSensor: ElecLineAcMagnitudeCurrentSensor {
+      lineCurrent: "L2"
+      modbusAddr: ModbusAddr { addr: "16404", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI11" }
+    }
+    elecL3AcMagnitudeCurrentSensor: ElecLineAcMagnitudeCurrentSensor {
+      lineCurrent: "L3"
+      modbusAddr: ModbusAddr { addr: "16406", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI12" }
+    }
+    elecLineAvgAcMagnitudeCurrentSensor: ElecLineAvgAcMagnitudeCurrentSensor {
+      modbusAddr: ModbusAddr { addr: "16408", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI13" }
+    }
+    elecNeutralAcMagnitudeCurrentSensor: ElecNeutralAcMagnitudeCurrentSensor {
+      modbusAddr: ModbusAddr { addr: "16410", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI14" }
+    }
+    elecL1NetAcActivePowerSensor: ElecPhaseNetAcActivePowerSensor {
+      phasePower: "L1"
+      modbusAddr: ModbusAddr { addr: "16412", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI15" }
+    }
+    elecL2NetAcActivePowerSensor: ElecPhaseNetAcActivePowerSensor {
+      phasePower: "L2"
+      modbusAddr: ModbusAddr { addr: "16414", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI16" }
+    }
+    elecL3NetAcActivePowerSensor: ElecPhaseNetAcActivePowerSensor {
+      phasePower: "L3"
+      modbusAddr: ModbusAddr { addr: "16416", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI17" }
+    }
+    elecTotalNetAcActivePowerSensor: ElecTotalNetAcActivePowerSensor {
+      modbusAddr: ModbusAddr { addr: "16418", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI18" }
+    }
+    elecL1NetAcReactivePowerSensor: ElecPhaseNetAcReactivePowerSensor {
+      phasePower: "L1"
+      modbusAddr: ModbusAddr { addr: "16420", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI19" }
+    }
+    elecL2NetAcReactivePowerSensor: ElecPhaseNetAcReactivePowerSensor {
+      phasePower: "L2"
+      modbusAddr: ModbusAddr { addr: "16422", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI20" }
+    }
+    elecL3NetAcReactivePowerSensor: ElecPhaseNetAcReactivePowerSensor {
+      phasePower: "L3"
+      modbusAddr: ModbusAddr { addr: "16424", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI21" }
+    }
+    elecTotalNetAcReactivePowerSensor: ElecTotalNetAcReactivePowerSensor {
+      modbusAddr: ModbusAddr { addr: "16426", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI22" }
+    }
+    elecL1NetAcApparentPowerSensor: ElecPhaseNetAcApparentPowerSensor {
+      phasePower: "L1"
+      modbusAddr: ModbusAddr { addr: "16428", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI23" }
+    }
+    elecL2NetAcApparentPowerSensor: ElecPhaseNetAcApparentPowerSensor {
+      phasePower: "L2"
+      modbusAddr: ModbusAddr { addr: "16430", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI24" }
+    }
+    elecL3NetAcApparentPowerSensor: ElecPhaseNetAcApparentPowerSensor {
+      phasePower: "L3"
+      modbusAddr: ModbusAddr { addr: "16432", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI25" }
+    }
+    elecTotalNetAcApparentPowerSensor: ElecTotalNetAcApparentPowerSensor {
+      modbusAddr: ModbusAddr { addr: "16434", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI26" }
+    }
+    elecL1AcPfSensor: ElecPhaseAcPfSensor {
+      pfTrue
+      pfIec
+      phasePf: "L1"
+      modbusAddr: ModbusAddr { addr: "16436", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI27" }
+    }
+    elecL2AcPfSensor: ElecPhaseAcPfSensor {
+      pfTrue
+      pfIec
+      phasePf: "L2"
+      modbusAddr: ModbusAddr { addr: "16438", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI28" }
+    }
+    elecL3AcPfSensor: ElecPhaseAcPfSensor {
+      pfTrue
+      pfIec
+      phasePf: "L3"
+      modbusAddr: ModbusAddr { addr: "16440", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI29" }
+    }
+    elecTotalAcPfSensor: ElecTotalAcPfSensor {
+      pfTrue
+      pfIec
+      modbusAddr: ModbusAddr { addr: "16442", encoding: "f4" }
+      bacnetAddr: BacnetAddr { addr: "AI30" }
+    }
+    elecLineAvgAcImbalanceVoltSensor: ElecLineAvgAcImbalanceVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16444", encoding: "f4", scale: "100" }
+      bacnetAddr: BacnetAddr { addr: "AI31" }
+    }
+    elecLineAvgAcImbalanceCurrentSensor: ElecLineAvgAcImbalanceCurrentSensor {
+      modbusAddr: ModbusAddr { addr: "16446", encoding: "f4", scale: "100" }
+      bacnetAddr: BacnetAddr { addr: "AI32" }
+    }
+    elecTotalNetAcActiveDemandSensor: ElecTotalNetAcActiveDemandSensor {
+      modbusAddr: ModbusAddr { addr: "16450", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI34" }
+    }
+    elecTotalNetAcReactiveDemandSensor: ElecTotalNetAcReactiveDemandSensor {
+      modbusAddr: ModbusAddr { addr: "16452", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI35" }
+    }
+    elecTotalNetAcApparentDemandSensor: ElecTotalNetAcApparentDemandSensor {
+      modbusAddr: ModbusAddr { addr: "16454", encoding: "f4", scale: "0.001" }
+      bacnetAddr: BacnetAddr { addr: "AI36" }
+    }
+    elecTotalImportAcActiveEnergySensor: ElecTotalImportAcActiveEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16456", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI40" }
+    }
+    elecTotalExportAcActiveEnergySensor: ElecTotalExportAcActiveEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16458", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI41" }
+    }
+    elecTotalImportAcReactiveEnergySensor: ElecTotalImportAcReactiveEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16460", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI42" }
+    }
+    elecTotalExportAcReactiveEnergySensor: ElecTotalExportAcReactiveEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16462", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI43" }
+    }
+    elecTotalNetAcActiveEnergySensor: ElecTotalNetAcActiveEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16466", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI45" }
+    }
+    elecTotalNetAcReactiveEnergySensor: ElecTotalNetAcReactiveEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16470", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI47" }
+    }
+    elecTotalNetAcApparentEnergySensor: ElecTotalNetAcApparentEnergySensor {
+      modbusAddr: ModbusAddr { addr: "16472", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI48" }
+    }
+    elecL1ImportAcActiveEnergySensor: ElecPhaseImportAcActiveEnergySensor {
+      phaseEnergy: "L1"
+      modbusAddr: ModbusAddr { addr: "17952", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI49" }
+    }
+    elecL1ExportAcActiveEnergySensor: ElecPhaseExportAcActiveEnergySensor {
+      phaseEnergy: "L1"
+      modbusAddr: ModbusAddr { addr: "17954", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI50" }
+    }
+    elecL2ImportAcActiveEnergySensor: ElecPhaseImportAcActiveEnergySensor {
+      phaseEnergy: "L2"
+      modbusAddr: ModbusAddr { addr: "17956", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI51" }
+    }
+    elecL2ExportAcActiveEnergySensor: ElecPhaseExportAcActiveEnergySensor {
+      phaseEnergy: "L2"
+      modbusAddr: ModbusAddr { addr: "17958", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI52" }
+    }
+    elecL3ImportAcActiveEnergySensor: ElecPhaseImportAcActiveEnergySensor {
+      phaseEnergy: "L3"
+      modbusAddr: ModbusAddr { addr: "17960", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI53" }
+    }
+    elecL3ExportAcActiveEnergySensor: ElecPhaseExportAcActiveEnergySensor {
+      phaseEnergy: "L3"
+      modbusAddr: ModbusAddr { addr: "17962", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI54" }
+    }
+    elecL1ImportAcReactiveEnergySensor: ElecPhaseImportAcReactiveEnergySensor {
+      phaseEnergy: "L1"
+      modbusAddr: ModbusAddr { addr: "17964", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI55" }
+    }
+    elecL1ExportAcReactiveEnergySensor: ElecPhaseExportAcReactiveEnergySensor {
+      phaseEnergy: "L1"
+      modbusAddr: ModbusAddr { addr: "17966", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI56" }
+    }
+    elecL2ImportAcReactiveEnergySensor: ElecPhaseImportAcReactiveEnergySensor {
+      phaseEnergy: "L2"
+      modbusAddr: ModbusAddr { addr: "17968", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI57" }
+    }
+    elecL2ExportAcReactiveEnergySensor: ElecPhaseExportAcReactiveEnergySensor {
+      phaseEnergy: "L2"
+      modbusAddr: ModbusAddr { addr: "17970", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI58" }
+    }
+    elecL3ImportAcReactiveEnergySensor: ElecPhaseImportAcReactiveEnergySensor {
+      phaseEnergy: "L3"
+      modbusAddr: ModbusAddr { addr: "17972", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI59" }
+    }
+    elecL3ExportAcReactiveEnergySensor: ElecPhaseExportAcReactiveEnergySensor {
+      phaseEnergy: "L3"
+      modbusAddr: ModbusAddr { addr: "17974", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI60" }
+    }
+    elecL1NetAcApparentEnergySensor: ElecLineNetAcApparentEnergySensor {
+      phaseEnergy: "L1"
+      modbusAddr: ModbusAddr { addr: "17976", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI61" }
+    }
+    elecL2NetAcApparentEnergySensor: ElecLineNetAcApparentEnergySensor {
+      phaseEnergy: "L2"
+      modbusAddr: ModbusAddr { addr: "17978", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI62" }
+    }
+    elecL3NetAcApparentEnergySensor: ElecLineNetAcApparentEnergySensor {
+      phaseEnergy: "L3"
+      modbusAddr: ModbusAddr { addr: "17980", encoding: "f4", scale: "0.1" }
+      bacnetAddr: BacnetAddr { addr: "AI63" }
+    }
+    elecL1AcThdCurrentSensor: ElecLineAcThdCurrentSensor {
+      lineCurrent: "L1"
+      modbusAddr: ModbusAddr { addr: "16478", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI68" }
+    }
+    elecL2AcThdCurrentSensor: ElecLineAcThdCurrentSensor {
+      lineCurrent: "L2"
+      modbusAddr: ModbusAddr { addr: "16479", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI69" }
+    }
+    elecL3AcThdCurrentSensor: ElecLineAcThdCurrentSensor {
+      lineCurrent: "L3"
+      modbusAddr: ModbusAddr { addr: "16480", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI70" }
+    }
+    elecLineAvgAcThdCurrentSensor: ElecPhaseAvgAcThdCurrentSensor {
+      modbusAddr: ModbusAddr { addr: "16481", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI71" }
+    }
+  }
+}
+
+
+// Device model for the Acuvim II Series Power Meter (1LN, 1LL, 3LN, or 3LN-2.5)
+Acuvim2ElecMeter1LNOr1LLOr3LN : Acuvim2ElecMeter {
+  points: {
+    elecL1NAcThdVoltSensor: ElecPhaseAcThdVoltSensor {
+      phaseVolt: "L1-N"
+      modbusAddr: ModbusAddr { addr: "16474", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI64" }
+    }
+    elecL2NAcThdVoltSensor: ElecPhaseAcThdVoltSensor {
+      phaseVolt: "L2-N"
+      modbusAddr: ModbusAddr { addr: "16475", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI65" }
+    }
+    elecL3NAcThdVoltSensor: ElecPhaseAcThdVoltSensor {
+      phaseVolt: "L3-N"
+      modbusAddr: ModbusAddr { addr: "16476", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI66" }
+    }
+    elecPhaseAvgAcThdVoltSensor: ElecPhaseAvgAcThdVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16477", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI67" }
+    }
+  }
+}
+
+
+// Device model for the Acuvim II Series Power Meter (2LL or 3LL)
+Acuvim2ElecMeter2LLOr3LL : Acuvim2ElecMeter {
+  points: {
+    elecL1L2AcThdVoltSensor: ElecLineAcThdVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16474", encoding: "f4", scale: "0.01" }
+      phaseVolt: "L1-L2"
+      bacnetAddr: BacnetAddr { addr: "AI64" }
+    }
+    elecL2L3AcThdVoltSensor: ElecLineAcThdVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16475", encoding: "f4", scale: "0.01" }
+      phaseVolt: "L2-L3"
+      bacnetAddr: BacnetAddr { addr: "AI65" }
+    }
+    elecL3L1AcThdVoltSensor: ElecLineAcThdVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16476", encoding: "f4", scale: "0.01" }
+      phaseVolt: "L3-L1"
+      bacnetAddr: BacnetAddr { addr: "AI66" }
+    }
+    elecLineAvgAcThdVoltSensor: ElecLineAvgAcThdVoltSensor {
+      modbusAddr: ModbusAddr { addr: "16477", encoding: "f4", scale: "0.01" }
+      bacnetAddr: BacnetAddr { addr: "AI67" }
+    }
+  }
+}
