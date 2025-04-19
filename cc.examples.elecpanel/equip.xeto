@@ -1,0 +1,42 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   16 Apr 2025  Rick Jennings  Creation
+//
+
+ElecSwitch : Equip <abstract> {
+  elec
+  switch
+}
+
+ElecAcSwitch : ElecSwitch <abstract> { ac }
+
+ElecAcCircuitBreaker : ElecAcSwitch <abstract> {
+  circuit
+  breaker
+}
+
+ElecAcCircuitBreaker3Phase480V : ElecAcCircuitBreaker {
+  threePhase
+  attrs: {
+    ElecAcRatedInputLineToLineNominalVoltAttr { val: 480V }
+    ElecAcRatedContinuousCapacityCurrentAttr { val: 80% }
+  }
+}
+
+ElecBus : Equip <abstract> {
+  elec
+  bus
+}
+
+ElecAcBus : ElecBus <abstract> { ac }
+
+ElecAcBus3Phase480VWye : ElecAcBus {
+  threePhase
+  attrs: {
+    ElecAcRatedInputLineToLineNominalVoltAttr { val: 480V }
+    ElecAcRatedInputLineToNeutralNominalVoltAttr { val: 277V }
+  }
+}

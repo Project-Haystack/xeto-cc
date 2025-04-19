@@ -1,0 +1,64 @@
+//
+// Copyright (c) 2025, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   16 Apr 2025  Rick Jennings  Creation
+//
+
+// Device model for an example AC electric panelboard
+ExampleElecAcPanel : ElecPanel {
+  ac
+  attrs: Query {
+    manufacturer: ManufacturerAttr { val: "Project Haystack" }
+  }
+  equips: {
+    mainCb: ElecAcCircuitBreaker3Phase480V {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 2000A }
+        ElecAcRatedMaxContinuousCurrentAttr { val: 1600A }
+        // FUTURE => elecRef TBD
+      }
+    }
+    generatorCb: ElecAcCircuitBreaker3Phase480V {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 2000A }
+        ElecAcRatedMaxContinuousCurrentAttr { val: 1600A }
+        // FUTURE => elecRef TBD
+      }
+    }
+    mainBus: ElecAcBus3Phase480VWye {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 2000A }
+        // FUTURE => elecRef: [@mainCb, @busTieCb]
+      }
+    }
+    lowerBus: ElecAcBus3Phase480VWye {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 2000A }
+        // FUTURE => elecRef: [@generatorCb, @busTieCb]
+      }
+    }
+    busTieCb: ElecAcCircuitBreaker3Phase480V {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 2000A }
+        ElecAcRatedMaxContinuousCurrentAttr { val: 1600A }
+        // FUTURE => elecRef: [@mainBus, @lowerBus]
+      }
+    }
+    branchCb1: ElecAcCircuitBreaker3Phase480V {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 300A }
+        ElecAcRatedMaxContinuousCurrentAttr { val: 240A }
+        // FUTURE => elecRef: @mainBus
+      }
+    }
+    feederCb1: ElecAcCircuitBreaker3Phase480V {
+      attrs: {
+        ElecAcRatedInputMaxCurrentAttr { val: 600A }
+        ElecAcRatedMaxContinuousCurrentAttr { val: 480A }
+        // FUTURE => elecRef: @lowerBus
+      }
+    }
+  }
+}
