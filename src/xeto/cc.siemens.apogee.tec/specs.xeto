@@ -1,0 +1,327 @@
+// BACnet PTEC Terminal Box (VAV) Controller Application 6520 - VAV Cooling Only
+PTEC_6520 : ph::Vav {  
+  dis: "PTEC 6520"
+  applicationNumber: "6520"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "SUPPLY_TEMP" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "AO29", dis: "DAY_NGT" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "BO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6520 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10322455"
+    }
+  }   
+}
+
+// BACnet PTEC Terminal Box (VAV) Controller Application 6521 - VAV Heating or Cooling
+PTEC_6521 : ph::Vav {  
+  dis: "PTEC 6521"
+  applicationNumber: "6521"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "SUPPLY_TEMP" } }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO33", dis: "HTG_FLOW_MIN" }, min }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempOccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO7", dis: "DAY_HTG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneAirTempUnoccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO9", dis: "NGT_HTG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6521 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10326316"
+    }
+  }   
+}
+
+//BACnet PTEC Controller Terminal Box (VAV) - with Electric Heat or Baseboard Radiation, Application 6522 
+PTEC_6522 : ph::Vav {  
+  dis: "PTEC 6522"
+  applicationNumber: "6522"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO60", dis: "EHEAT_FLOW" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "DISCH_AIRT" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO43", dis: "HEAT_STAGE_1" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO44", dis: "HEAT_STAGE_2" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO45", dis: "HEAT_STAGE_3" } }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO33", dis: "HTG_FLOW_MIN" }, min }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempOccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO7", dis: "DAY_HTG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneAirTempUnoccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO9", dis: "NGT_HTG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6522 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10322458"
+    }
+  }   
+}
+
+//BACnet PTEC Controller Terminal Box (VAV) - with Hot Water Reheat, Application 6523
+PTEC_6523 : ph::Vav {  
+  dis: "PTEC 6523"
+  applicationNumber: "6523"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "DISCH_AIRT" } }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO33", dis: "HTG_FLOW_MIN" }, min }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
+    ValveCmd { bacnetAddr: BacnetAddr { addr: "AO37", dis: "VLV2_COMD" } }
+    ValveCmd { bacnetAddr: BacnetAddr { addr: "AO52", dis: "VLV1_COMD" } }
+    ValveSensor { bacnetAddr: BacnetAddr { addr: "AO38", dis: "VLV2_POS" } }
+    ValveSensor { bacnetAddr: BacnetAddr { addr: "AO53", dis: "VLV1_POS" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempOccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO7", dis: "DAY_HTG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneAirTempUnoccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO9", dis: "NGT_HTG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6523 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10322459"
+    }
+  }   
+}
+
+//BACnet PTEC Controller Terminal Box (VAV) - with Series Fan and 3-Stage Electric Heat, Application 6524
+PTEC_6524 : ph::Vav {  
+  dis: "PTEC 6524"
+  applicationNumber: "6524"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "DISCH_AIRT" } }
+    FanRunCmd { bacnetAddr: BacnetAddr { addr: "BO46", dis: "FAN" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO43", dis: "HEAT_STAGE_1" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO44", dis: "HEAT_STAGE_2" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO45", dis: "HEAT_STAGE_3" } }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO33", dis: "HTG_FLOW_MIN" }, min }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempOccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO7", dis: "DAY_HTG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneAirTempUnoccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO9", dis: "NGT_HTG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6524 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10322460"
+    }
+  }   
+}
+
+//BACnet PTEC Controller Terminal Box (VAV) - with Series Fan and Hot Water Heat, Application 6525
+PTEC_6525 : ph::Vav {  
+  dis: "PTEC 6525"
+  applicationNumber: "6525"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "DISCH_AIRT" } }
+    FanRunCmd { bacnetAddr: BacnetAddr { addr: "BO46", dis: "FAN" } }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO33", dis: "HTG_FLOW_MIN" }, min }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
+    ValveCmd { bacnetAddr: BacnetAddr { addr: "AO52", dis: "VLV_COMD" } }
+    ValveSensor { bacnetAddr: BacnetAddr { addr: "AO53", dis: "VLV_POS" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempOccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO7", dis: "DAY_HTG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneAirTempUnoccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO9", dis: "NGT_HTG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6525 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10322461"
+    }
+  }   
+}
+
+//BACnet PTEC Controller Terminal Box (VAV) - with Parallel Fan and 3-Stage Electric Heat, Application 6526
+PTEC_6526 : ph::Vav {  
+  dis: "PTEC 6526"
+  applicationNumber: "6526"
+  attrs: {
+    ElecAcVoltAttr { val: "24" }
+    ManufacturerAttr { val: "Siemens"}
+  }
+  points: {
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
+    ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
+    CoolCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
+    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
+    DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO93", dis: "FLOW_STPT" } }
+    DischargeAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI15", dis: "DISCH_AIRT" } }
+    FanRunCmd { bacnetAddr: BacnetAddr { addr: "BO46", dis: "FAN" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO43", dis: "HEAT_STAGE_1" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO44", dis: "HEAT_STAGE_2" } }
+    HeatCmd { bacnetAddr: BacnetAddr { addr: "BO45", dis: "HEAT_STAGE_3" } }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO33", dis: "HTG_FLOW_MIN" }, min }
+    HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
+    OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
+    ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
+    ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
+    ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
+    ZoneAirTempOccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO7", dis: "DAY_HTG_STPT" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AI4", dis: "ROOM_TEMP" } }
+    ZoneAirTempSensor { bacnetAddr: BacnetAddr { addr: "AO78", dis: "CTL_TEMP" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AI13", dis: "RM_STPT_DIAL" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "AO92", dis: "CTL_STPT" } }
+    ZoneAirTempSp { bacnetAddr: BacnetAddr { addr: "BO14", dis: "STPT_DIAL" } }
+    ZoneAirTempUnoccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO8", dis: "NGT_CLG_STPT" } }
+    ZoneAirTempUnoccHeatingSp { bacnetAddr: BacnetAddr { addr: "AO9", dis: "NGT_HTG_STPT" } }
+    ZoneCo2Sensor { bacnetAddr: BacnetAddr { addr: "AI125", dis: "RM_CO2" } }
+    DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
+  }
+  resources: Query {
+    File {
+      dis: "PTEC 6526 Application Guide"
+      uri: "https://sid.siemens.com/v/u/A6V10322462"
+    }
+  }   
+}

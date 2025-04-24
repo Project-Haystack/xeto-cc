@@ -1,0 +1,22 @@
+pragma: Lib <
+  doc: "Siemens PTEC Controller Applications 6520 through 6526"
+  version: "0.0.1"
+  depends: {
+    { lib: "sys", versions: "0.1.x" }
+    { lib: "ph", versions: "0.1.x" } 
+    { lib: "ph.points", versions: "0.1.x" }
+    { lib: "ph.protocols", versions: "0.x.x" }
+    { lib: "sys.files", versions: "0.x.x" }
+    { lib: "ph.attrs", versions: "0.x.x" }
+  }
+  license: "AFL-3.0"
+  org: {
+   dis: "Project Haystack"
+   uri: "https://project-haystack.org/"
+  }
+  vcs: {
+    type: "git"
+    uri:  "https://github.com/Project-Haystack/xeto-cc.git"
+  }
+>
+ 
