@@ -30,7 +30,7 @@ PTEC_6520 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6520 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10322455"
     }
@@ -75,7 +75,7 @@ PTEC_6521 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6521 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10326316"
     }
@@ -124,7 +124,7 @@ PTEC_6522 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6522 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10322458"
     }
@@ -173,7 +173,7 @@ PTEC_6523 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6523 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10322459"
     }
@@ -222,7 +222,7 @@ PTEC_6524 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6524 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10322460"
     }
@@ -270,7 +270,7 @@ PTEC_6525 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6525 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10322461"
     }
@@ -319,7 +319,7 @@ PTEC_6526 : ph::Vav {
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AI35", dis: "AIR_VOLUME" } } 
   }
   resources: Query {
-    File {
+    PdfFile {
       dis: "PTEC 6526 Application Guide"
       uri: "https://sid.siemens.com/v/u/A6V10322462"
     }
