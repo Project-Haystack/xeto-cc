@@ -167,12 +167,12 @@ Acuvim2ElecMeter : AcElecMeter {
       modbusAddr: ModbusAddr { addr: "16442", encoding: "f4" }
       bacnetAddr: BacnetAddr { addr: "AI30" }
     }
-    ElecAcLineAvgStatVoltSensor {
+    ElecAcLineAvgMetricVoltSensor {
       imbalance
       modbusAddr: ModbusAddr { addr: "16444", encoding: "f4", scale: "100" }
       bacnetAddr: BacnetAddr { addr: "AI31" }
     }
-    ElecAcLineAvgStatCurrentSensor {
+    ElecAcLineAvgMetricCurrentSensor {
       imbalance
       modbusAddr: ModbusAddr { addr: "16446", encoding: "f4", scale: "100" }
       bacnetAddr: BacnetAddr { addr: "AI32" }
@@ -292,25 +292,25 @@ Acuvim2ElecMeter : AcElecMeter {
       modbusAddr: ModbusAddr { addr: "17980", encoding: "f4", scale: "0.1" }
       bacnetAddr: BacnetAddr { addr: "AI63" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       totalHarmonicDistortion
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16478", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI68" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       totalHarmonicDistortion
       lineCurrent: "L2"
       modbusAddr: ModbusAddr { addr: "16479", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI69" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       totalHarmonicDistortion
       lineCurrent: "L3"
       modbusAddr: ModbusAddr { addr: "16480", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI70" }
     }
-    ElecAcLineAvgStatCurrentSensor {
+    ElecAcLineAvgMetricCurrentSensor {
       totalHarmonicDistortion
       modbusAddr: ModbusAddr { addr: "16481", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI71" }
@@ -445,35 +445,35 @@ Acuvim2ElecMeter : AcElecMeter {
 
 
 
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       elecAcHarmonicOrder: 2
       individualHarmonicDistortion
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16584", encoding: "s2", scale: "0.01" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       elecAcHarmonicOrder: 3
       individualHarmonicDistortion
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16585", encoding: "s2", scale: "0.01" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       elecAcHarmonicOrder: 4
       individualHarmonicDistortion
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16586", encoding: "s2", scale: "0.01" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       oddTotalHarmonicDistortion
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16614", encoding: "s2", scale: "0.01" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       evenTotalHarmonicDistortion
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16615", encoding: "s2", scale: "0.01" }
     }
-    ElecAcLineStatCurrentSensor {
+    ElecAcLineMetricCurrentSensor {
       kFactor
       lineCurrent: "L1"
       modbusAddr: ModbusAddr { addr: "16616", encoding: "s2", scale: "0.01" }

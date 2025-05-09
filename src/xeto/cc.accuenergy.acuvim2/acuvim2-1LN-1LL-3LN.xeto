@@ -9,102 +9,102 @@
 // Device model for the Acuvim II Series Power Meter (1LN, 1LL, 3LN, or 3LN-2.5 wiring)
 Acuvim2ElecMeter1LNOr1LLOr3LN : Acuvim2ElecMeter {
   points: {
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       totalHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16474", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI64" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       totalHarmonicDistortion
       phaseVolt: "L2-N"
       modbusAddr: ModbusAddr { addr: "16475", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI65" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       totalHarmonicDistortion
       phaseVolt: "L3-N"
       modbusAddr: ModbusAddr { addr: "16476", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI66" }
     }
-    ElecAcPhaseAvgStatVoltSensor {
+    ElecAcPhaseAvgMetricVoltSensor {
       totalHarmonicDistortion
       modbusAddr: ModbusAddr { addr: "16477", encoding: "s2", scale: "0.01" }
       bacnetAddr: BacnetAddr { addr: "AI67" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 2
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16482", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 3
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16483", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 4
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16484", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 5
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16485", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 6
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16486", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 7
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16487", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 8
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16488", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 9
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16489", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 10
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16490", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 11
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16491", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 12
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16492", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 13
       individualHarmonicDistortion
       phaseVolt: "L1-N"
       modbusAddr: ModbusAddr { addr: "16493", encoding: "s2", scale: "0.01" }
     }
-    ElecAcPhaseStatVoltSensor {
+    ElecAcPhaseMetricVoltSensor {
       elecAcHarmonicOrder: 14
       individualHarmonicDistortion
       phaseVolt: "L1-N"
