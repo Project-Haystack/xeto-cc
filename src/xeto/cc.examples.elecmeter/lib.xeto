@@ -2,9 +2,9 @@ pragma: Lib <
   doc: "Device model for an example net AC electric meter"
   version: "0.1.1"
   depends: {
-    { lib: "sys", versions: "0.1.x" }
-    { lib: "ph", versions: "0.1.x" }
-    { lib: "ph.points", versions: "0.1.x" }
+    { lib: "sys" }
+    { lib: "ph" }
+    { lib: "ph.points" }
   }
   license: "AFL-3.0"
   org: {
@@ -16,4 +16,3 @@ pragma: Lib <
     uri:  "https://github.com/Project-Haystack/xeto-cc.git"
   }
 >
-

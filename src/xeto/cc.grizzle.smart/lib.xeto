@@ -2,12 +2,12 @@ pragma: Lib <
   doc: "Device model for the Grizzl-E Smart 40A"
   version: "0.1.1"
   depends: {
-    { lib: "sys", versions: "0.1.x" }
-    { lib: "ph", versions: "0.1.x" }
-    { lib: "ph.equips", versions: "0.1.x" }
-    { lib: "ph.attrs", versions: "0.1.x" }
-    { lib: "ph.points", versions: "0.1.x" }
-    { lib: "ph.points.elec", versions: "0.1.x" }
+    { lib: "sys" }
+    { lib: "ph" }
+    { lib: "ph.equips" }
+    { lib: "ph.attrs" }
+    { lib: "ph.points" }
+    { lib: "ph.points.elec" }
   }
   license: "AFL-3.0"
   org: {
@@ -19,4 +19,3 @@ pragma: Lib <
     uri:  "https://github.com/Project-Haystack/xeto-cc.git"
   }
 >
-
