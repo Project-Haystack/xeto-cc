@@ -21,4 +21,4 @@ These configuration settings must be applied to the Acuvim II for the Xeto specs
 
  * Table 6-20 shows "R/W" as the access property for modbus registers.  These registers are modeled as having read only access at this time.
  * A subset of the BACnet addresses in Table 6-85 do not describe the semantic differences between wiring configs as shown for Table 6-27.
- * Might need to support sunspec scale factors (example modbus address 50101)
+ * Might need to support sunspec scale factors (example modbus address 450102)

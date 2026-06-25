@@ -4,6 +4,7 @@
 //
 // History:
 //   15 Apr 2025  Rick Jennings  Creation
+//   25 Jun 2026  Conform modbus addrs to 6-digit Modicon and scale exprs
 //
 
 // Device model for Accuenergy's Acuvim II Series Power Meter connected to a
@@ -13,123 +14,123 @@ Acuvim2ElecAc3PhaseDeltaMeter : Acuvim2ElecAcMeter & ElecAc3PhaseDeltaMeter {
     ElecAcPhaseQualityVoltageSensor {
       totalHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16474", encoding: "f4", scale: "0.01", dis: "THD_V12" }
+      modbusAddr: ModbusAddr { addr: "416475", encoding: "f4", scale: "*0.01", dis: "THD_V12" }
       bacnetAddr: BacnetAddr { addr: "AI64" }
     }
     ElecAcPhaseQualityVoltageSensor {
       totalHarmonicDistortion
       phase: "L3-L1"
-      modbusAddr: ModbusAddr { addr: "16475", encoding: "f4", scale: "0.01", dis: "THD_V31" }
+      modbusAddr: ModbusAddr { addr: "416476", encoding: "f4", scale: "*0.01", dis: "THD_V31" }
       bacnetAddr: BacnetAddr { addr: "AI66" }
     }
     ElecAcPhaseQualityVoltageSensor {
       totalHarmonicDistortion
       phase: "L2-L3"
-      modbusAddr: ModbusAddr { addr: "16476", encoding: "f4", scale: "0.01", dis: "THD_V23" }
+      modbusAddr: ModbusAddr { addr: "416477", encoding: "f4", scale: "*0.01", dis: "THD_V23" }
       bacnetAddr: BacnetAddr { addr: "AI65" }
     }
     ElecAcLLAvgQualityVoltageSensor {
       totalHarmonicDistortion
-      modbusAddr: ModbusAddr { addr: "16477", encoding: "f4", scale: "0.01", dis: "THD_avg" }
+      modbusAddr: ModbusAddr { addr: "416478", encoding: "f4", scale: "*0.01", dis: "THD_avg" }
       bacnetAddr: BacnetAddr { addr: "AI67" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 2
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16482", encoding: "s2", scale: "0.01", dis: "V12 2nd Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416483", encoding: "s2", scale: "*0.01", dis: "V12 2nd Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 3
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16483", encoding: "s2", scale: "0.01", dis: "V12 3rd Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416484", encoding: "s2", scale: "*0.01", dis: "V12 3rd Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 4
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16484", encoding: "s2", scale: "0.01", dis: "V12 4th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416485", encoding: "s2", scale: "*0.01", dis: "V12 4th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 5
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16485", encoding: "s2", scale: "0.01", dis: "V12 5th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416486", encoding: "s2", scale: "*0.01", dis: "V12 5th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 6
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16486", encoding: "s2", scale: "0.01", dis: "V12 6th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416487", encoding: "s2", scale: "*0.01", dis: "V12 6th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 7
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16487", encoding: "s2", scale: "0.01", dis: "V12 7th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416488", encoding: "s2", scale: "*0.01", dis: "V12 7th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 8
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16488", encoding: "s2", scale: "0.01", dis: "V12 8th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416489", encoding: "s2", scale: "*0.01", dis: "V12 8th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 9
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16489", encoding: "s2", scale: "0.01", dis: "V12 9th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416490", encoding: "s2", scale: "*0.01", dis: "V12 9th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 10
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16490", encoding: "s2", scale: "0.01", dis: "V12 10th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416491", encoding: "s2", scale: "*0.01", dis: "V12 10th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 11
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16491", encoding: "s2", scale: "0.01", dis: "V12 11th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416492", encoding: "s2", scale: "*0.01", dis: "V12 11th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 12
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16492", encoding: "s2", scale: "0.01", dis: "V12 12th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416493", encoding: "s2", scale: "*0.01", dis: "V12 12th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 13
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16493", encoding: "s2", scale: "0.01", dis: "V12 13th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416494", encoding: "s2", scale: "*0.01", dis: "V12 13th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       elecAcHarmonicOrder: 14
       individualHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16494", encoding: "s2", scale: "0.01", dis: "V12 14th Harmonic" }
+      modbusAddr: ModbusAddr { addr: "416495", encoding: "s2", scale: "*0.01", dis: "V12 14th Harmonic" }
     }
     ElecAcPhaseQualityVoltageSensor {
       oddTotalHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16512", encoding: "s2", scale: "0.01", dis: "Odd THD_V12" }
+      modbusAddr: ModbusAddr { addr: "416513", encoding: "s2", scale: "*0.01", dis: "Odd THD_V12" }
     }
     ElecAcPhaseQualityVoltageSensor {
       evenTotalHarmonicDistortion
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16513", encoding: "s2", scale: "0.01", dis: "Even THD_V12" }
+      modbusAddr: ModbusAddr { addr: "416514", encoding: "s2", scale: "*0.01", dis: "Even THD_V12" }
     }
     ElecAcPhaseQualityVoltageSensor {
       crestFactor
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16514", encoding: "s2", scale: "0.01", dis: "Crest Factor V12" }
+      modbusAddr: ModbusAddr { addr: "416515", encoding: "s2", scale: "*0.01", dis: "Crest Factor V12" }
     }
     ElecAcPhaseQualityVoltageSensor {
       telephoneHarmonicFormFactor
       phase: "L1-L2"
-      modbusAddr: ModbusAddr { addr: "16515", encoding: "s2", scale: "0.01", dis: "THFF_V12" }
+      modbusAddr: ModbusAddr { addr: "416516", encoding: "s2", scale: "*0.01", dis: "THFF_V12" }
     }
   }
 }
