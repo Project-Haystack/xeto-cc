@@ -1,0 +1,11 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   26 Jun 2026  Rick Jennings  Creation
+//
+
+// Device model for Accuenergy's Acuvim II Series Power Meter configured to
+// use 1 line-to-neutral voltage channel.
+Acuvim2ElecAc1LNMeter : Acuvim2ElecAc1LNOr1LLOr3LNMeter & ElecAc1LNMeter

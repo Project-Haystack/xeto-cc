@@ -6,21 +6,22 @@
 //   19 Jun 2026  Rick Jennings  Creation
 //
 
-ElecAcMeter: AcElecMeter
-ElecAcMeterPlaceholderEquip: Dict
+ElecAcMeter : AcElecMeter
 
-// An AC electric meter connected to a 3-phase, wye electrical system
-// with a neutral.
-ElecAc3PhaseWyeNeutralMeter: ElecAcMeterPlaceholderEquip
+// An AC electric meter that uses 3 line-to-neutral voltage channels.
+ElecAc3LNMeter: ElecAcMeter
 
-// An AC electric meter connected to a 3-phase, delta electrical system
-// with no neutral.
-ElecAc3PhaseDeltaMeter: ElecAcMeterPlaceholderEquip
+// An AC electric meter that uses 3 line-to-line voltage channels.
+ElecAc3LLMeter: ElecAcMeter
 
-// An AC electric meter connected to a split-phase electrical system
-// with a neutral.
-ElecAcSplitPhaseNeutralMeter: ElecAcMeterPlaceholderEquip
+// An AC electric meter that uses 2 line-to-line voltage channels.
+ElecAc2LLMeter: ElecAcMeter
 
-// An AC electric meter connected to a single-phase electrical source
-// with a neutral.
-ElecAc1PhaseNeutralMeter: ElecAcMeterPlaceholderEquip
+// An AC electric meter that uses 1 line-to-line voltage channel.
+ElecAc1LLMeter: ElecAcMeter
+
+// An AC electric meter that uses 1 line-to-neutral voltage channel.
+ElecAc1LNMeter: ElecAcMeter
+
+// An AC electric meter that uses 2 line-to-neutral voltage channels.
+ElecAc2LNMeter: ElecAcMeter

@@ -7,9 +7,9 @@
 //   25 Jun 2026  Conform modbus addrs to 6-digit Modicon and scale exprs
 //
 
-// Device model for Accuenergy's Acuvim II Series Power Meter connected to a
-// 3-phase, delta electrical system with no neutral.
-Acuvim2ElecAc3PhaseDeltaMeter : Acuvim2ElecAcMeter & ElecAc3PhaseDeltaMeter {
+// Device model for Accuenergy's Acuvim II Series Power Meter configured to
+// use 3 line-to-line voltage channels.
+Acuvim2ElecAc3LLMeter : Acuvim2ElecAcMeter & ElecAc3LLMeter {
   points: {
     ElecAcPhaseQualityVoltageSensor {
       totalHarmonicDistortion

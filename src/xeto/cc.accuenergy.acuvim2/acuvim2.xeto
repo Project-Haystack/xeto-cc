@@ -8,7 +8,7 @@
 //
 
 // Device model for Accuenergy's Acuvim II Series Power Meter
-Acuvim2ElecAcMeter : ElecAcMeter <abstract> {
+Acuvim2ElecAcMeter : AcElecMeter <abstract> {
   resources: Query {
     PdfFile {
       dis: "Acuvim II Series Power Meter User Manual"
