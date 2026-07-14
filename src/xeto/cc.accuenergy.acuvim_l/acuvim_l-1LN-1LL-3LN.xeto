@@ -1,0 +1,62 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   14 Jul 2026  Trevor Adelman  Creation
+//
+
+// Device model for Accuenergy's Acuvim-L Series Power Meter (1LN, 1LL, 3LN,
+// or 3LN-2.5 wiring). In these wiring modes the voltage THD registers report
+// phase voltage THD.
+AcuvimLElecAc1LNOr1LLOr3LNMeter : AcuvimLElecAcMeter <abstract> {
+  points: {
+    ElecAcPhaseQualityVoltageSensor {
+      totalHarmonicDistortion
+      phase: "L1"
+      modbusAddr: ModbusAddr { addr: "416475", encoding: "s2", scale: "*0.01", dis: "THD_V1" }
+      bacnetAddr: BacnetAddr { addr: "AI64", dis: "Phase A Voltage THD" }
+    }
+    ElecAcPhaseQualityVoltageSensor {
+      totalHarmonicDistortion
+      phase: "L2"
+      modbusAddr: ModbusAddr { addr: "416476", encoding: "s2", scale: "*0.01", dis: "THD_V2" }
+      bacnetAddr: BacnetAddr { addr: "AI65", dis: "Phase B Voltage THD" }
+    }
+    ElecAcPhaseQualityVoltageSensor {
+      totalHarmonicDistortion
+      phase: "L3"
+      modbusAddr: ModbusAddr { addr: "416477", encoding: "s2", scale: "*0.01", dis: "THD_V3" }
+      bacnetAddr: BacnetAddr { addr: "AI66", dis: "Phase C Voltage THD" }
+    }
+    ElecAcLAvgQualityVoltageSensor {
+      totalHarmonicDistortion
+      modbusAddr: ModbusAddr { addr: "416478", encoding: "s2", scale: "*0.01", dis: "THD_avg" }
+      bacnetAddr: BacnetAddr { addr: "AI67", dis: "Average Voltage THD" }
+    }
+  }
+}
+
+// Device model for Accuenergy's Acuvim-L Series Power Meter configured to
+// use 3 line-to-neutral voltage channels.
+AcuvimLElecAc3LNMeter : AcuvimLElecAc1LNOr1LLOr3LNMeter & ElecAc3LNMeter <abstract>
+
+// Device model for Accuenergy's Acuvim-L Series Power Meter configured to
+// use 1 line-to-neutral voltage channel.
+AcuvimLElecAc1LNMeter : AcuvimLElecAc1LNOr1LLOr3LNMeter & ElecAc1LNMeter <abstract>
+
+// Device model for Accuenergy's Acuvim-L Series Power Meter configured to
+// use 1 line-to-line voltage channel.
+AcuvimLElecAc1LLMeter : AcuvimLElecAc1LNOr1LLOr3LNMeter & ElecAc1LLMeter <abstract>
+
+// Device model for Accuenergy's Acuvim-EL Power Meter configured to
+// use 3 line-to-neutral voltage channels.
+AcuvimELElecAc3LNMeter : AcuvimLElecAc3LNMeter
+
+// Device model for Accuenergy's Acuvim-EL Power Meter configured to
+// use 1 line-to-neutral voltage channel.
+AcuvimELElecAc1LNMeter : AcuvimLElecAc1LNMeter
+
+// Device model for Accuenergy's Acuvim-EL Power Meter configured to
+// use 1 line-to-line voltage channel.
+AcuvimELElecAc1LLMeter : AcuvimLElecAc1LLMeter

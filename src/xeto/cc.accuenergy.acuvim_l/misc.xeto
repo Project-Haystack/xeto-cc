@@ -1,0 +1,27 @@
+//
+// Copyright (c) 2026, Project-Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   19 Jun 2026  Rick Jennings  Creation
+//
+
+ElecAcMeter : AcElecMeter
+
+// An AC electric meter that uses 3 line-to-neutral voltage channels.
+ElecAc3LNMeter: ElecAcMeter
+
+// An AC electric meter that uses 3 line-to-line voltage channels.
+ElecAc3LLMeter: ElecAcMeter
+
+// An AC electric meter that uses 2 line-to-line voltage channels.
+ElecAc2LLMeter: ElecAcMeter
+
+// An AC electric meter that uses 1 line-to-line voltage channel.
+ElecAc1LLMeter: ElecAcMeter
+
+// An AC electric meter that uses 1 line-to-neutral voltage channel.
+ElecAc1LNMeter: ElecAcMeter
+
+// An AC electric meter that uses 2 line-to-neutral voltage channels.
+ElecAc2LNMeter: ElecAcMeter
