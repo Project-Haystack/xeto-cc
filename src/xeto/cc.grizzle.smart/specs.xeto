@@ -42,7 +42,7 @@ GrizzlESmart : EvseDispenser {
     OcppChargePointErrorSensor
   }
   equips: {
-    evsePort1: OcppAcEvsePort & EvseCable {
+    evsePort1: OcppAcEvsePort & EvseConnector {
       singlePhase
       attrs: Query {
         ElecAcRatedInputMaxCurrentAttr { val: 40A }

@@ -63,7 +63,7 @@ HelioxFlex250ADispenser : EvseDispenser {
     OcppChargePointErrorSensor
   }
   equips: {
-    evsePort1: OcppDcEvsePort & EvseCable {
+    evsePort1: OcppDcEvsePort & EvseConnector {
       attrs: Query {
         ElecDcRatedInputMaxCurrentAttr { val: 250A }
         ElecDcRatedInputMinVoltAttr { val: 150V }
