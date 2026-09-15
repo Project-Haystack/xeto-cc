@@ -1,0 +1,1105 @@
+//
+// Copyright (c) 2026, Project Haystack
+// Licensed under the Academic Free License version 3.0
+//
+// History:
+//   15 Sep 2026  Trevor Adelman  Creation
+//
+
+//////////////////////////////////////////////////////////////////////////
+// Local Enum Types
+//////////////////////////////////////////////////////////////////////////
+
+OccupancyStatusEnum : Enum { occupied, unoccupied, bypass, standby }
+OccupancyModeEnum : Enum { occupied, unoccupied, bypass, standby }
+PanelOccupancyStatusEnum : Enum { unoccupied, occupied, standby, bypass }
+TempSensorTypeEnum : Enum {
+  voltage, current, resistance, ntc10k3a1, ntc10k4a1, ntc10kCarel,
+  ntc20k6a1, ntc2_2k3a1, ntc3k3a1, ntc30k6a1, sie1, tac1, sat1, pt1000,
+  ni1000, ni1000_21c, ni1000LgF, ntc10kType2F, ntc10kType3F, ntc20kF,
+  ntc3kF, pt1000F, ni1000_32F, ni1000_70F
+}
+TemperatureInputSelectorEnum : Enum { panel, input, network }
+SetpointOffsetSelectorEnum : Enum { panel, input, network }
+Co2InputSelectorEnum : Enum { panel, input, network }
+HvacModeEnum : Enum {
+  auto, heat, morningWarmUp, cool, nightPurge, preCool, off, fire
+}
+HvacStatusEnum : Enum {
+  occupiedCooling, occupiedHeating, standbyCooling, standbyHeating,
+  unoccupiedCooling, unoccupiedHeating, off, fire
+}
+DamperCommandModeEnum : Enum {
+  auto, maxFlow, minFlow, userFlow, userPosition, fullOpen, fullClose,
+  calibrate
+}
+FanCommandModeEnum : Enum { auto, maxSpeed, minSpeed, stop }
+ReheaterCommandModeEnum : Enum { auto, fullOpen, fullClose }
+HeaterPriorityEnum : Enum { reheater, perimeter, simultaneous }
+ReheaterStatusEnum : Enum { off, stage1, stage2 }
+PerimeterCommandModeEnum : Enum { auto, fullOpen, fullClose }
+PerimeterTypeEnum : Enum { none, timeProp, digital }
+ReheaterTypeEnum : Enum { none, timeProp, staged, float }
+FanTypeEnum : Enum { none, series, parallel }
+PanelFanStatusEnum : Enum { off, speed1, speed2, speed3 }
+
+//////////////////////////////////////////////////////////////////////////
+// Main Device Model
+//////////////////////////////////////////////////////////////////////////
+
+// iSMA Controlli VAV14-IP -- BACnet/IP terminal unit controller for VAV
+// applications, part of the nano EDGE ENGINE series.
+//
+// Source documentation:
+//   VAV14-IP Software User Manual (DMP305en, 1st Issue rev. 4, 06/2026)
+//   Section 4.1.6 "List of Variables in Application" -- 116 licensed
+//   Data Points, https://support.ismacontrolli.com/ (see RESEARCH.md)
+//
+//   nano EDGE ENGINE series BACnet PICS (2026-04-15, firmware 1.10,
+//   BACnet Protocol Revision 19, B-ASC device profile)
+//
+// Scope: this model covers application-level BACnet-exposed Data Points
+// as documented in section 4.1.6.  Points that map to an existing ph spec
+// use it directly; points with no ph equivalent are modeled with generic
+// point shapes and the `notHaystack` marker.  Point doc comments are
+// transcribed verbatim from the manual's "BACnet Objects/Modbus
+// Registers" quick start-up table (section 4.1.5).  Four low-level
+// TriacOutputsConfig points (TO1-TO4) and I/O wiring assignments (section
+// 4.1.7) are hardware terminal references, not control points, and are
+// excluded -- see RESEARCH.md for the full accounting.
+IsmaVav14 : Vav {
+
+  attrs: Query {
+    ManufacturerAttr { val: "iSMA Controlli" }
+    ModelSeriesAttr { val: "VAV14-IP" }
+  }
+
+  points: {
+
+    //////////////////////////////////////////////////////////////////
+    // OccupancyCalculator
+    //////////////////////////////////////////////////////////////////
+
+    // Current occupancy status
+    EnumPoint {
+      sensor
+      dis: "OccupancyStatus"
+      notHaystack
+      enum: Obj <val:OccupancyStatusEnum>
+      bacnetAddr: BacnetAddr { addr: "MSI2" }
+      modbusAddr: ModbusAddr { addr: "300023", encoding: "u2" }
+    }
+    // Allows to set room the occupancy mode from the BMS system
+    EnumPoint {
+      sp
+      dis: "OccupancyMode"
+      notHaystack
+      enum: Obj <val:OccupancyModeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV2" }
+      modbusAddr: ModbusAddr { addr: "400263", encoding: "u2", access: "rw" }
+    }
+    // Current room occupancy status dedicated to Control Point room panel
+    EnumPoint {
+      sensor
+      dis: "PanelOccupancyStatus"
+      notHaystack
+      enum: Obj <val:PanelOccupancyStatusEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV3" }
+      modbusAddr: ModbusAddr { addr: "400701", encoding: "u2", access: "rw" }
+    }
+    // Status of set room occupancy mode from Control Point room panel
+    EnumPoint {
+      sp
+      dis: "PanelOccupancyMode"
+      notHaystack
+      enum: Obj <val:OccupiedEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV4" }
+      modbusAddr: ModbusAddr { addr: "400702", encoding: "u2", access: "rw" }
+    }
+    // Actual presence sensor state from the I1 input
+    ZoneOccupiedSensor {
+      dis: "PresenceSensor"
+      bacnetAddr: BacnetAddr { addr: "BI0" }
+      modbusAddr: ModbusAddr { addr: "100302", encoding: "bit" }
+    }
+    // Actual window contact state from the I2 input
+    BoolPoint {
+      sensor
+      dis: "WindowContact"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BI1" }
+      modbusAddr: ModbusAddr { addr: "100304", encoding: "bit" }
+    }
+    // Time required to maintain the bypass occupancy status (after
+    // expiration it returns to the previous status)
+    NumberPoint {
+      sp
+      dis: "BypassTimeOverride"
+      notHaystack
+      unit: Unit "min"
+      bacnetAddr: BacnetAddr { addr: "AV34" }
+      modbusAddr: ModbusAddr { addr: "400235", encoding: "u2", access: "rw" }
+    }
+    // Time required to change the occupancy status to standby (after
+    // motion detection disappears)
+    NumberPoint {
+      sp
+      dis: "StandbyTimeOverride"
+      notHaystack
+      unit: Unit "min"
+      bacnetAddr: BacnetAddr { addr: "AV35" }
+      modbusAddr: ModbusAddr { addr: "400236", encoding: "u2", access: "rw" }
+    }
+    // Automatically changes occupancy to occupied when increased airflow
+    // is detected: false (disabled), true (enabled)
+    BoolPoint {
+      sp
+      dis: "AutoOccMode"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV0" }
+      modbusAddr: ModbusAddr { addr: "000101", encoding: "bit", access: "rw" }
+    }
+    // Resetting the room occupancy mode from occupied to unoccupied in
+    // the Control Point room panel
+    EnumPoint {
+      sp
+      dis: "PanelOccupancyReset"
+      notHaystack
+      enum: Obj <val:OccupiedEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV5" }
+      modbusAddr: ModbusAddr { addr: "400703", encoding: "u2", access: "rw" }
+    }
+    // Allows to invert the I1 input signal if required: false (normal),
+    // true (invert)
+    BoolPoint {
+      sp
+      dis: "PresenceSensorInvert"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV4" }
+      modbusAddr: ModbusAddr { addr: "000105", encoding: "bit", access: "rw" }
+    }
+    // Allows to invert the I2 input signal if required: false (normal),
+    // true (invert)
+    BoolPoint {
+      sp
+      dis: "WindowContactInvert"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV5" }
+      modbusAddr: ModbusAddr { addr: "000106", encoding: "bit", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // TemperatureSelector
+    //////////////////////////////////////////////////////////////////
+
+    // Calculated space temperature
+    ZoneAirTempSensor {
+      dis: "SpaceTemperature"
+      bacnetAddr: BacnetAddr { addr: "AI1" }
+      modbusAddr: ModbusAddr { addr: "300005", encoding: "u2" }
+    }
+    // Temperature sensor value from the network
+    AirTempSensor {
+      dis: "NetTemperature"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV10" }
+      modbusAddr: ModbusAddr { addr: "400211", encoding: "u2", access: "rw" }
+    }
+    // Actual temperature sensor value from the local U2 input
+    AirTempSensor {
+      dis: "U2SpaceTemperature"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI3" }
+      modbusAddr: ModbusAddr { addr: "300004", encoding: "u2" }
+    }
+    // Actual temperature sensor value from the room panel
+    AirTempSensor {
+      dis: "PanelTemperature"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI4" }
+      modbusAddr: ModbusAddr { addr: "300301", encoding: "u2" }
+    }
+    // Calculated discharge temperature
+    DischargeAirTempSensor {
+      dis: "DischargeTemperature"
+      bacnetAddr: BacnetAddr { addr: "AI13" }
+      modbusAddr: ModbusAddr { addr: "300014", encoding: "u2" }
+    }
+    // Discharge temperature sensor value from the network
+    AirTempSensor {
+      dis: "NetDuctInTemp"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV18" }
+      modbusAddr: ModbusAddr { addr: "400219", encoding: "u2", access: "rw" }
+    }
+    // Actual discharge temperature sensor value comes from the U1 input
+    AirTempSensor {
+      dis: "U1DischTemperature"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI16" }
+      modbusAddr: ModbusAddr { addr: "300017", encoding: "u2" }
+    }
+    // Allows to select the space temperature type
+    EnumPoint {
+      sp
+      dis: "U2SpaceTempType"
+      notHaystack
+      enum: Obj <val:TempSensorTypeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV22" }
+      modbusAddr: ModbusAddr { addr: "400283", encoding: "u2", access: "rw" }
+    }
+    // Allows to select the discharge temperature type
+    EnumPoint {
+      sp
+      dis: "U1DischargeTempType"
+      notHaystack
+      enum: Obj <val:TempSensorTypeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV21" }
+      modbusAddr: ModbusAddr { addr: "400282", encoding: "u2", access: "rw" }
+    }
+    // Allows to choose the temperature source for control logic
+    EnumPoint {
+      sp
+      dis: "TemperatureInputSelector"
+      notHaystack
+      enum: Obj <val:TemperatureInputSelectorEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV23" }
+      modbusAddr: ModbusAddr { addr: "400284", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // OffsetCalculator
+    //////////////////////////////////////////////////////////////////
+
+    // Temperature offset for setpoint from the room panel
+    AirTempSensor {
+      delta
+      dis: "OffsetTempSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV58" }
+      modbusAddr: ModbusAddr { addr: "400504", encoding: "u2", access: "rw" }
+    }
+    // Sets the setpoint offset range to be changed by the user (e.g., a
+    // value of 5 means a range from -5 to +5), (min = 0, max = 10)
+    AirTempSp {
+      delta
+      dis: "SetpointOffsetRange"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV37" }
+      modbusAddr: ModbusAddr { addr: "400238", encoding: "u2", access: "rw" }
+    }
+    // Actual setpoint offset value (calculated from resistance) from the
+    // U3 input
+    AirTempSensor {
+      delta
+      dis: "U3SetpointOffset"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI17" }
+      modbusAddr: ModbusAddr { addr: "300018", encoding: "u2" }
+    }
+    // Allows to select which value to be displayed during the offset
+    // editing according to the set Panel Setpoint Mode: false (offset),
+    // true (setpoint)
+    BoolPoint {
+      sp
+      dis: "PanelSetpointDisplay"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BO56" }
+      modbusAddr: ModbusAddr { addr: "000157", encoding: "bit", access: "rw" }
+    }
+    // Offset temperature setpoint value from the network
+    AirTempSp {
+      delta
+      dis: "NetOffsetSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV41" }
+      modbusAddr: ModbusAddr { addr: "400242", encoding: "u2", access: "rw" }
+    }
+    // Allows to choose the setpoint offset source for control logic
+    EnumPoint {
+      sp
+      dis: "SetpointOffsetSelector"
+      notHaystack
+      enum: Obj <val:SetpointOffsetSelectorEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV24" }
+      modbusAddr: ModbusAddr { addr: "400285", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // TemperatureSetpointSelector
+    //////////////////////////////////////////////////////////////////
+
+    // Sets the temperature setpoint mode in the Control Point room panel
+    // - directly or as an offset: false (offset), true (setpoint)
+    BoolPoint {
+      sp
+      dis: "PanelSetpointMode"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BO55" }
+      modbusAddr: ModbusAddr { addr: "000156", encoding: "bit", access: "rw" }
+    }
+    // Temperature setpoint for cooling in the occupied state
+    ZoneAirTempOccCoolingSp {
+      dis: "OccCoolTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV0" }
+      modbusAddr: ModbusAddr { addr: "400201", encoding: "u2", access: "rw" }
+    }
+    // Temperature setpoint for heating in the occupied state
+    ZoneAirTempOccHeatingSp {
+      dis: "OccHeatTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV1" }
+      modbusAddr: ModbusAddr { addr: "400202", encoding: "u2", access: "rw" }
+    }
+    // Temperature setpoint for cooling in the standby state
+    ZoneAirTempStandbyCoolingSp {
+      dis: "StandbyCoolTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV2" }
+      modbusAddr: ModbusAddr { addr: "400203", encoding: "u2", access: "rw" }
+    }
+    // Temperature setpoint for heating in the standby state
+    ZoneAirTempStandbyHeatingSp {
+      dis: "StandbyHeatTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV3" }
+      modbusAddr: ModbusAddr { addr: "400204", encoding: "u2", access: "rw" }
+    }
+    // Temperature setpoint for cooling in the unoccupied state
+    ZoneAirTempUnoccCoolingSp {
+      dis: "UnoccCoolTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV4" }
+      modbusAddr: ModbusAddr { addr: "400205", encoding: "u2", access: "rw" }
+    }
+    // Temperature setpoint for heating in the unoccupied state
+    ZoneAirTempUnoccHeatingSp {
+      dis: "UnoccHeatTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV5" }
+      modbusAddr: ModbusAddr { addr: "400206", encoding: "u2", access: "rw" }
+    }
+    // Calculated effective temperature setpoint based on occupancy
+    // status and heating or cooling temperature setpoints (depending on
+    // demand)
+    ZoneAirTempEffectiveSp {
+      dis: "EffectiveTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AI9" }
+      modbusAddr: ModbusAddr { addr: "300010", encoding: "u2" }
+    }
+    // Calculated Central Temperature Setpoint based on setpoints and
+    // occupancy status
+    AirTempSp {
+      dis: "CentralTempSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI10" }
+      modbusAddr: ModbusAddr { addr: "300011", encoding: "u2" }
+    }
+    // Temperature setpoint from the room panel
+    AirTempSp {
+      dis: "PanelTempSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV56" }
+      modbusAddr: ModbusAddr { addr: "400502", encoding: "u2", access: "rw" }
+    }
+    // High limit of discharge temperature supplied to the room
+    AirTempSp {
+      dis: "MaxDischTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV7" }
+      modbusAddr: ModbusAddr { addr: "400208", encoding: "u2", access: "rw" }
+    }
+    // Calculated discharge temperature setpoint based on the effective
+    // temperature setpoint and heating demand for high-limiting
+    // discharge temperature
+    AirTempSp {
+      dis: "ActDischTempSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI14" }
+      modbusAddr: ModbusAddr { addr: "300015", encoding: "u2" }
+    }
+    // Low limit of discharge temperature supplied to the room
+    AirTempSp {
+      dis: "MinDischTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV8" }
+      modbusAddr: ModbusAddr { addr: "400209", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // CO2Selector
+    //////////////////////////////////////////////////////////////////
+
+    // Actual CO2 sensor value from the room panel
+    Co2Sensor {
+      dis: "PanelCO2"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI6" }
+      modbusAddr: ModbusAddr { addr: "300303", encoding: "u2" }
+    }
+    // CO2 sensor value comes from the network
+    Co2Sensor {
+      dis: "NetCO2"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV40" }
+      modbusAddr: ModbusAddr { addr: "400241", encoding: "u2", access: "rw" }
+    }
+    // Actual CO2 sensor value from the local U4 input
+    Co2Sensor {
+      dis: "U4CO2Sensor"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI8" }
+      modbusAddr: ModbusAddr { addr: "300009", encoding: "u2" }
+    }
+    // Calculated space CO2
+    ZoneCo2Sensor {
+      dis: "SpaceCO2"
+      bacnetAddr: BacnetAddr { addr: "AI5" }
+      modbusAddr: ModbusAddr { addr: "300006", encoding: "u2" }
+    }
+    // Sets the range of the CO2 sensor used (min = 0, max = 10000)
+    NumberPoint {
+      sp
+      dis: "U4CO2SensorRange"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV38" }
+      modbusAddr: ModbusAddr { addr: "400239", encoding: "u2", access: "rw" }
+    }
+    // Allows to select the CO2 source for control logic
+    EnumPoint {
+      sp
+      dis: "CO2InputSelector"
+      notHaystack
+      enum: Obj <val:Co2InputSelectorEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV25" }
+      modbusAddr: ModbusAddr { addr: "400286", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // AirflowCalculator
+    //////////////////////////////////////////////////////////////////
+
+    // Sets the K-Factor (the flow rate at a differential pressure of 1
+    // inWC/1 Pa on the measuring cross) for the given VAV model (min = 0)
+    NumberPoint {
+      sp
+      dis: "K-Factor"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV61" }
+      modbusAddr: ModbusAddr { addr: "400289", encoding: "u2", access: "rw" }
+    }
+    // Actual differential pressure sensor-measured value from the
+    // built-in pressure input
+    AirPressureSensor {
+      delta
+      dis: "DifferentialPressure"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI15" }
+      modbusAddr: ModbusAddr { addr: "300016", encoding: "u2" }
+    }
+    // Actual calculated airflow based on the K-Factor value and
+    // differential pressure measure
+    DischargeAirFlowSensor {
+      dis: "ActualAirFlow"
+      bacnetAddr: BacnetAddr { addr: "AI11" }
+      modbusAddr: ModbusAddr { addr: "300012", encoding: "u2" }
+    }
+    // Allows to enter the airflow value measured by the hood for
+    // calibration
+    NumberPoint {
+      sp
+      dis: "AirflowCalibration"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV66" }
+      modbusAddr: ModbusAddr { addr: "400294", encoding: "u2", access: "rw" }
+    }
+    // Calculated K-Factor value (meaning the flow rate at a differential
+    // pressure of 1 inWC/1 Pa on the measuring cross) based on the
+    // entered measured airflow (using the hood) and the measured
+    // differential pressure from the built-in PI input
+    NumberPoint {
+      sensor
+      dis: "CalculatedKFactor"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV62" }
+      modbusAddr: ModbusAddr { addr: "400290", encoding: "u2", access: "rw" }
+    }
+    // Allows to perform zeroing action on the built-in PI pressure
+    // transducer if there is a non-zero value in the absence of airflow.
+    // Important: perform in the absence of airflow through the pressure
+    // transducer ports: false (no), true (zeroing)
+    BoolPoint {
+      cmd
+      dis: "PressureZeroing"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV13" }
+      modbusAddr: ModbusAddr { addr: "000114", encoding: "bit", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // AirflowSetpointCalculator
+    //////////////////////////////////////////////////////////////////
+
+    // Calculated effective airflow setpoint based on the occupancy
+    // status and heating or cooling airflow setpoints
+    DischargeAirFlowSp {
+      dis: "EffectiveAirFlowSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AI12" }
+      modbusAddr: ModbusAddr { addr: "300013", encoding: "u2" }
+    }
+    // Current HVAC status
+    EnumPoint {
+      sensor
+      dis: "HVACStatus"
+      notHaystack
+      enum: Obj <val:HvacStatusEnum>
+      bacnetAddr: BacnetAddr { addr: "MSI1" }
+      modbusAddr: ModbusAddr { addr: "300022", encoding: "u2" }
+    }
+    // Allows to set the operating mode for the VAV device
+    ZoneAirHvacModeSp {
+      dis: "HVACMode"
+      enum: Obj <val:HvacModeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV1" }
+      modbusAddr: ModbusAddr { addr: "400262", encoding: "u2", access: "rw" }
+    }
+    // Maximum airflow setpoint for cooling in the occupied state (min = 0)
+    AirFlowSp {
+      max, occ, cooling
+      dis: "MaxOccCoolAirflowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV11" }
+      modbusAddr: ModbusAddr { addr: "400212", encoding: "u2", access: "rw" }
+    }
+    // Maximum airflow setpoint for heating in the occupied state (min = 0)
+    AirFlowSp {
+      max, occ, heating
+      dis: "MaxOccHeatAirflowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV13" }
+      modbusAddr: ModbusAddr { addr: "400214", encoding: "u2", access: "rw" }
+    }
+    // Minimum airflow setpoint for cooling in the occupied state (min = 0)
+    AirFlowSp {
+      min, occ, cooling
+      dis: "MinOccCoolAirflowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV12" }
+      modbusAddr: ModbusAddr { addr: "400213", encoding: "u2", access: "rw" }
+    }
+    // Minimum airflow setpoint for heating in the occupied state (min = 0)
+    AirFlowSp {
+      min, occ, heating
+      dis: "MinOccHeatAirflowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV14" }
+      modbusAddr: ModbusAddr { addr: "400215", encoding: "u2", access: "rw" }
+    }
+    // Airflow setpoint in the standby state (min = 0)
+    AirFlowSp {
+      standby
+      dis: "StandbyAirFlowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV15" }
+      modbusAddr: ModbusAddr { addr: "400216", encoding: "u2", access: "rw" }
+    }
+    // Airflow setpoint in the unoccupied state (min = 0)
+    AirFlowSp {
+      unocc
+      dis: "UnoccAirFlowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV16" }
+      modbusAddr: ModbusAddr { addr: "400217", encoding: "u2", access: "rw" }
+    }
+    // Airflow setpoint for a fan startup only (min = 0)
+    AirFlowSp {
+      fan
+      dis: "StartupFanAirflowSetpoint"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV17" }
+      modbusAddr: ModbusAddr { addr: "400218", encoding: "u2", access: "rw" }
+    }
+    // User-set airflow setpoint (after selecting the User Position mode
+    // in the Damper Command variable) (min = 0)
+    AirFlowSp {
+      dis: "UserSetAirflow"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AV65" }
+      modbusAddr: ModbusAddr { addr: "400293", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // Heat&CoolLoops
+    //////////////////////////////////////////////////////////////////
+
+    // Discharge temperature setpoint for detecting warm air to change
+    // the heating/cooling mode
+    AirTempSp {
+      dis: "HotAirTempSetpoint"
+      bacnetAddr: BacnetAddr { addr: "AV9" }
+      modbusAddr: ModbusAddr { addr: "400210", encoding: "u2", access: "rw" }
+    }
+    // Heating mode status to be displayed as an icon on the Control
+    // Point room panel: false (no heating), true (heating)
+    BoolPoint {
+      sensor
+      dis: "PanelHeating"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BO16" }
+      modbusAddr: ModbusAddr { addr: "000117", encoding: "bit", access: "rw" }  // source doc prints 00017; corrected per dec addr 116
+    }
+    // Cooling mode status to be displayed as an icon on the Control
+    // Point room panel: false (no cooling), true (cooling)
+    BoolPoint {
+      sensor
+      dis: "PanelCooling"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BO17" }
+      modbusAddr: ModbusAddr { addr: "000118", encoding: "bit", access: "rw" }
+    }
+    // Delay time for changing the heating/cooling operating mode
+    NumberPoint {
+      sp
+      dis: "ChangeoverDelay"
+      notHaystack
+      unit: Unit "min"
+      bacnetAddr: BacnetAddr { addr: "AV36" }
+      modbusAddr: ModbusAddr { addr: "400237", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // Airflow/DAT/CO2Loops
+    //////////////////////////////////////////////////////////////////
+
+    // CO2 setpoint for the room (regardless of the occupancy status)
+    ZoneCo2Sp {
+      dis: "SpaceCO2Setpoint"
+      bacnetAddr: BacnetAddr { addr: "AV6" }
+      modbusAddr: ModbusAddr { addr: "400207", encoding: "u2", access: "rw" }
+    }
+    // Required opening level of the fresh air damper in the AHU
+    // resulting from the current CO2 level in the room (network signal
+    // to the AHU control)
+    NumberPoint {
+      cmd
+      dis: "AHUOutdoorDamper"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AO4" }
+      modbusAddr: ModbusAddr { addr: "400255", encoding: "u2" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // DamperControl
+    //////////////////////////////////////////////////////////////////
+
+    // Allows to choose VAV device control type from airflow demand (VAV
+    // also known as pressure independent) or from cooling/heating demand
+    // (VVT also known as pressure dependent): false (VAV), true (VVT)
+    BoolPoint {
+      sp
+      dis: "DeviceType"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV6" }
+      modbusAddr: ModbusAddr { addr: "000107", encoding: "bit", access: "rw" }
+    }
+    // Maximum damper open position limit (min = 0, max = 100)
+    NumberPoint {
+      sp
+      dis: "MaxDamperPosition"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV21" }
+      modbusAddr: ModbusAddr { addr: "400222", encoding: "u2", access: "rw" }
+    }
+    // Minimum damper open position limit (min = 0, max = 100)
+    NumberPoint {
+      sp
+      dis: "MinDamperPosition"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV22" }
+      modbusAddr: ModbusAddr { addr: "400223", encoding: "u2", access: "rw" }
+    }
+    // User-set damper opening level (after selecting the User Position
+    // mode in the Damper Command variable) (min = 0, max = 100)
+    NumberPoint {
+      sp
+      dis: "UserSetPosition"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV64" }
+      modbusAddr: ModbusAddr { addr: "400292", encoding: "u2", access: "rw" }
+    }
+    // Allows to enable dual heating mode with repeater/perimeter and
+    // damper (no effect without damper): false (no), true (yes)
+    BoolPoint {
+      sp
+      dis: "DualHeat"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV8" }
+      modbusAddr: ModbusAddr { addr: "000109", encoding: "bit", access: "rw" }
+    }
+    // Allows to set the priority of the damper heating operation when
+    // working in the active DualHeat mode: false (secondary), true
+    // (primary)
+    BoolPoint {
+      sp
+      dis: "HeatDamperPriority"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV11" }
+      modbusAddr: ModbusAddr { addr: "000112", encoding: "bit", access: "rw" }
+    }
+    // Actual damper opening level coming from the Rotary Actuator
+    // component (Position Feedback signal)
+    DischargeAirDamperModulatingSensor {
+      dis: "DamperPosition"
+      bacnetAddr: BacnetAddr { addr: "AO0" }
+      modbusAddr: ModbusAddr { addr: "300251", encoding: "u2" }
+    }
+    // Sets the value of how much the control signal must change to
+    // perform the next damper movement
+    NumberPoint {
+      sp
+      dis: "DamperResponse"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV26" }
+      modbusAddr: ModbusAddr { addr: "400227", encoding: "u2", access: "rw" }
+    }
+    // Time required to reach full damper open position (from 0% to 100%)
+    // (min = 0)
+    NumberPoint {
+      sp
+      dis: "DamperDriveTime"
+      notHaystack
+      unit: Unit "sec"
+      bacnetAddr: BacnetAddr { addr: "AV25" }
+      modbusAddr: ModbusAddr { addr: "400226", encoding: "u2", access: "rw" }
+    }
+    // Sets the damper opening direction: false (CW), true (CCW)
+    BoolPoint {
+      sp
+      dis: "DirectionActuator"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV9" }
+      modbusAddr: ModbusAddr { addr: "000110", encoding: "bit", access: "rw" }
+    }
+    // Damper opening level control resulting from the application
+    DischargeAirDamperModulatingCmd {
+      dis: "DamperControl"
+      bacnetAddr: BacnetAddr { addr: "AV67" }
+      modbusAddr: ModbusAddr { addr: "400295", encoding: "u2", access: "rw" }
+    }
+    // Allows to set different damper command modes for calibration,
+    // balancing, or testing
+    EnumPoint {
+      cmd
+      dis: "DamperCommand"
+      notHaystack
+      enum: Obj <val:DamperCommandModeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV7" }
+      modbusAddr: ModbusAddr { addr: "400268", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // FanControl
+    //////////////////////////////////////////////////////////////////
+
+    // Allows to set different fan command modes for testing
+    EnumPoint {
+      cmd
+      dis: "FanCommand"
+      notHaystack
+      enum: Obj <val:FanCommandModeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV8" }
+      modbusAddr: ModbusAddr { addr: "400269", encoding: "u2", access: "rw" }
+    }
+    // Allows to select the fan control mode: false (digital), true
+    // (analog)
+    BoolPoint {
+      sp
+      dis: "FanControlMode"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV10" }
+      modbusAddr: ModbusAddr { addr: "000111", encoding: "bit", access: "rw" }
+    }
+    // Maximum fan speed level limit (min = 0, max = 100)
+    NumberPoint {
+      sp
+      dis: "MaxFanSpeed"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV23" }
+      modbusAddr: ModbusAddr { addr: "400224", encoding: "u2", access: "rw" }
+    }
+    // Minimum fan speed level limit (min = 0, max = 100)
+    NumberPoint {
+      sp
+      dis: "MinFanSpeed"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV24" }
+      modbusAddr: ModbusAddr { addr: "400225", encoding: "u2", access: "rw" }
+    }
+    // Allows to use the parallel fan also in the Morning WarmUp mode (in
+    // the HVAC Mode variable): false (disabled), true (enabled)
+    BoolPoint {
+      sp
+      dis: "WarmUpParallelFan"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV2" }
+      modbusAddr: ModbusAddr { addr: "000103", encoding: "bit", access: "rw" }
+    }
+    // Allows to use the series fan also in standby occupancy: false
+    // (disabled), true (enabled)
+    BoolPoint {
+      sp
+      dis: "StandbySeriesFan"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV3" }
+      modbusAddr: ModbusAddr { addr: "000104", encoding: "bit", access: "rw" }
+    }
+    // Delay time for switching off the fan
+    NumberPoint {
+      sp
+      dis: "FanDelayOff"
+      notHaystack
+      unit: Unit "sec"
+      bacnetAddr: BacnetAddr { addr: "AV39" }
+      modbusAddr: ModbusAddr { addr: "400240", encoding: "u2", access: "rw" }
+    }
+    // Fan status to be displayed as an icon on the Control Point room
+    // panel
+    EnumPoint {
+      sensor
+      dis: "PanelFanStatus"
+      notHaystack
+      enum: Obj <val:PanelFanStatusEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV0" }
+      modbusAddr: ModbusAddr { addr: "400601", encoding: "u2", access: "rw" }
+    }
+    // Fan digital control status (if configured as digital) from the
+    // application: false (off), true (on)
+    FanRunSensor {
+      dis: "FanStatus"
+      bacnetAddr: BacnetAddr { addr: "BO1" }
+      modbusAddr: ModbusAddr { addr: "000122", encoding: "bit", access: "rw" }
+    }
+    // Fan speed level control resulting from the application
+    FanSpeedModulatingCmd {
+      dis: "FanSpeed"
+      bacnetAddr: BacnetAddr { addr: "AO2" }
+      modbusAddr: ModbusAddr { addr: "400253", encoding: "u2" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // ReheaterControl
+    //////////////////////////////////////////////////////////////////
+
+    // Load-shedding level required from the network (min = 0, max = 100)
+    NumberPoint {
+      sp
+      dis: "LoadShedding"
+      notHaystack
+      unit: Unit "%"
+      bacnetAddr: BacnetAddr { addr: "AV20" }
+      modbusAddr: ModbusAddr { addr: "400221", encoding: "u2", access: "rw" }
+    }
+    // Allows to set different reheater command modes for testing
+    EnumPoint {
+      cmd
+      dis: "ReheaterCommand"
+      notHaystack
+      enum: Obj <val:ReheaterCommandModeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV9" }
+      modbusAddr: ModbusAddr { addr: "400270", encoding: "u2", access: "rw" }
+    }
+    // Possibility to select heating priority for heating sources
+    EnumPoint {
+      sp
+      dis: "HeaterPriority"
+      notHaystack
+      enum: Obj <val:HeaterPriorityEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV14" }
+      modbusAddr: ModbusAddr { addr: "400275", encoding: "u2", access: "rw" }
+    }
+    // Allows to use the reheater also in the Morning WarmUp mode (in the
+    // HVAC Mode variable): false (disabled), true (enabled)
+    BoolPoint {
+      sp
+      dis: "WarmUpHeater"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV1" }
+      modbusAddr: ModbusAddr { addr: "000102", encoding: "bit", access: "rw" }
+    }
+    // Reheater valve opening level control resulting from the
+    // application
+    HeatModulatingCmd {
+      dis: "ReheaterControl"
+      reheat
+      bacnetAddr: BacnetAddr { addr: "AO1" }
+      modbusAddr: ModbusAddr { addr: "400252", encoding: "u2" }
+    }
+    // Time required for a PWM valve for a full cycle time of a reheater
+    NumberPoint {
+      sp
+      dis: "TimePropReheaterPeriod"
+      notHaystack
+      unit: Unit "sec"
+      bacnetAddr: BacnetAddr { addr: "AV32" }
+      modbusAddr: ModbusAddr { addr: "400233", encoding: "u2", access: "rw" }
+    }
+    // Time required to reach full reheater valve open (from 0% to 100%)
+    NumberPoint {
+      sp
+      dis: "FloatReheaterValveDriveTime"
+      notHaystack
+      unit: Unit "sec"
+      bacnetAddr: BacnetAddr { addr: "AV30" }
+      modbusAddr: ModbusAddr { addr: "400231", encoding: "u2", access: "rw" }
+    }
+    // Reheater staged control status (if configured as digital or
+    // staged) from application
+    EnumPoint {
+      sensor
+      dis: "ReheaterStatus"
+      notHaystack
+      enum: Obj <val:ReheaterStatusEnum>
+      bacnetAddr: BacnetAddr { addr: "MSO0" }
+      modbusAddr: ModbusAddr { addr: "400291", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // PerimeterControl
+    //////////////////////////////////////////////////////////////////
+
+    // Allows to set different perimeter command modes for testing
+    EnumPoint {
+      cmd
+      dis: "PerimeterCommand"
+      notHaystack
+      enum: Obj <val:PerimeterCommandModeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV10" }
+      modbusAddr: ModbusAddr { addr: "400271", encoding: "u2", access: "rw" }
+    }
+    // Perimeter valve opening level control resulting from the
+    // application
+    HeatModulatingCmd {
+      dis: "PerimeterControl"
+      perimeterHeat
+      bacnetAddr: BacnetAddr { addr: "AO3" }
+      modbusAddr: ModbusAddr { addr: "400254", encoding: "u2" }
+    }
+    // Perimeter digital control status (if configured as digital) from
+    // the application: false (off), true (on)
+    HeatRunSensor {
+      dis: "PerimeterStatus"
+      perimeterHeat
+      bacnetAddr: BacnetAddr { addr: "BO0" }
+      modbusAddr: ModbusAddr { addr: "000121", encoding: "bit", access: "rw" }
+    }
+    // Time required for a PWM valve for a full cycle time of a perimeter
+    NumberPoint {
+      sp
+      dis: "TimePropPerimeterPeriod"
+      notHaystack
+      unit: Unit "sec"
+      bacnetAddr: BacnetAddr { addr: "AV33" }
+      modbusAddr: ModbusAddr { addr: "400234", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // OutsideTemperatureControl
+    //////////////////////////////////////////////////////////////////
+
+    // Maximum outside air temperature limit that allows the use of a
+    // reheater
+    AirTempSp {
+      dis: "MaxOatReheater"
+      bacnetAddr: BacnetAddr { addr: "AV28" }
+      modbusAddr: ModbusAddr { addr: "400229", encoding: "u2", access: "rw" }
+    }
+    // Maximum outside air temperature limit that allows the use of a
+    // perimeter
+    AirTempSp {
+      dis: "MaxOatPerimeter"
+      bacnetAddr: BacnetAddr { addr: "AV29" }
+      modbusAddr: ModbusAddr { addr: "400230", encoding: "u2", access: "rw" }
+    }
+    // Outside air temperature sensor value from the network
+    OutsideAirTempSensor {
+      dis: "NetOutdoorTemp"
+      bacnetAddr: BacnetAddr { addr: "AV19" }
+      modbusAddr: ModbusAddr { addr: "400220", encoding: "u2", access: "rw" }
+    }
+
+    //////////////////////////////////////////////////////////////////
+    // DeviceConfiguration
+    //////////////////////////////////////////////////////////////////
+
+    // Allows to choose to set a source of the device application
+    // configuration: false (BACnet), true (DIP switch)
+    BoolPoint {
+      sp
+      dis: "DeviceConfigurationSource"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BV12" }
+      modbusAddr: ModbusAddr { addr: "000113", encoding: "bit", access: "rw" }
+    }
+    // Allows to set the perimeter type
+    EnumPoint {
+      sp
+      dis: "PerimeterType"
+      notHaystack
+      enum: Obj <val:PerimeterTypeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV13" }
+      modbusAddr: ModbusAddr { addr: "400274", encoding: "u2", access: "rw" }
+    }
+    // Allows to set the reheater type
+    EnumPoint {
+      sp
+      dis: "ReheaterType"
+      notHaystack
+      enum: Obj <val:ReheaterTypeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV12" }
+      modbusAddr: ModbusAddr { addr: "400273", encoding: "u2", access: "rw" }
+    }
+    // Allows to set the fan type
+    EnumPoint {
+      sp
+      dis: "FanType"
+      notHaystack
+      enum: Obj <val:FanTypeEnum>
+      bacnetAddr: BacnetAddr { addr: "MSV11" }
+      modbusAddr: ModbusAddr { addr: "400272", encoding: "u2", access: "rw" }
+    }
+    // Allows to change the unit in the application provided that the
+    // BACnet configuration is allowed in the Device Configuration Source
+    // variable: false (metric), true (imperial)
+    BoolPoint {
+      sp
+      dis: "Units"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "BO2" }
+      modbusAddr: ModbusAddr { addr: "000123", encoding: "bit", access: "rw" }
+    }
+    // Device's up time
+    NumberPoint {
+      sensor
+      dis: "UpTime"
+      notHaystack
+      unit: Unit "sec"
+      bacnetAddr: BacnetAddr { addr: "AI0" }
+      modbusAddr: ModbusAddr { addr: "300001", encoding: "u2" }
+    }
+    // Current application version
+    NumberPoint {
+      sensor
+      dis: "AppVersion"
+      notHaystack
+      bacnetAddr: BacnetAddr { addr: "AI100" }
+      modbusAddr: ModbusAddr { addr: "300103", encoding: "u2" }
+    }
+
+    // TriacOutputsConfig (TO1-TO4) and List of I/Os (section 4.1.7) are
+    // low-level hardware terminal/wiring references, not application
+    // control points -- excluded per Playbook Step 2.2, documented here
+    // rather than silently dropped. TO1-TO4 use BACnet ID/Modbus values
+    // 996-999 with no unit, no description, and "Exposed on BACnet/Modbus"
+    // marked False in the source table.
+  }
+}

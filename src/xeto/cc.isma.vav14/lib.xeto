@@ -1,0 +1,21 @@
+pragma: Lib <
+  doc: "iSMA Controlli VAV14-IP Terminal Unit Controller (nano EDGE ENGINE series)"
+  version: "0.1.0"
+  depends: {
+    { lib: "sys" }
+    { lib: "ph" }
+    { lib: "ph.points" }
+    { lib: "ph.points.sugar" }
+    { lib: "ph.protocols" }
+    { lib: "ph.attrs" }
+  }
+  license: "AFL-3.0"
+  org: {
+    dis: "Project Haystack"
+    uri: "https://project-haystack.org/"
+  }
+  vcs: {
+    type: "git"
+    uri:  "https://github.com/Project-Haystack/xeto-cc.git"
+  }
+>
