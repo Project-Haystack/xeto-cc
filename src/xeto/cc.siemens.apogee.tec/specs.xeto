@@ -10,8 +10,8 @@ PTEC_6520 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
@@ -49,8 +49,8 @@ PTEC_6521 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
@@ -94,8 +94,8 @@ PTEC_6522 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO60", dis: "EHEAT_FLOW" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
@@ -143,8 +143,8 @@ PTEC_6523 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
@@ -154,10 +154,10 @@ PTEC_6523 : ph::Vav {
     HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
     OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
     OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
-    ValveCmd { bacnetAddr: BacnetAddr { addr: "AO37", dis: "VLV2_COMD" } }
-    ValveCmd { bacnetAddr: BacnetAddr { addr: "AO52", dis: "VLV1_COMD" } }
-    ValveSensor { bacnetAddr: BacnetAddr { addr: "AO38", dis: "VLV2_POS" } }
-    ValveSensor { bacnetAddr: BacnetAddr { addr: "AO53", dis: "VLV1_POS" } }
+    ValveModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO37", dis: "VLV2_COMD" } }
+    ValveModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO52", dis: "VLV1_COMD" } }
+    ValveModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO38", dis: "VLV2_POS" } }
+    ValveModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO53", dis: "VLV1_POS" } }
     ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
     ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
     ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
@@ -192,8 +192,8 @@ PTEC_6524 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
@@ -241,8 +241,8 @@ PTEC_6525 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
@@ -253,8 +253,8 @@ PTEC_6525 : ph::Vav {
     HotDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO34", dis: "HTG_FLOW_MAX" }, max }
     OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO21", dis: "NGT_OVRD" } }
     OccupiedSp { bacnetAddr: BacnetAddr { addr: "BO29", dis: "DAY_NGT" } }
-    ValveCmd { bacnetAddr: BacnetAddr { addr: "AO52", dis: "VLV_COMD" } }
-    ValveSensor { bacnetAddr: BacnetAddr { addr: "AO53", dis: "VLV_POS" } }
+    ValveModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO52", dis: "VLV_COMD" } }
+    ValveModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO53", dis: "VLV_POS" } }
     ZoneAirHumiditySensor { bacnetAddr: BacnetAddr { addr: "AI126", dis: "RM_RH" } }
     ZoneAirHvacModeSp { bacnetAddr: BacnetAddr { addr: "BO5", dis: "HEAT_COOL" } }
     ZoneAirTempOccCoolingSp { bacnetAddr: BacnetAddr { addr: "AO6", dis: "DAY_CLG_STPT" } }
@@ -289,8 +289,8 @@ PTEC_6526 : ph::Vav {
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO31", dis: "CLG_FLOW_MIN" }, min }
     ColdDeckDischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO32", dis: "CLG_FLOW_MAX" }, max }
     CoolRunCmd { bacnetAddr: BacnetAddr { addr: "AO79", dis: "CLG_LOOPOUT" } }
-    DamperCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
-    DamperSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
+    DamperModulatingCmd { bacnetAddr: BacnetAddr { addr: "AO48", dis: "DMPR_COMD" } }
+    DamperModulatingSensor { bacnetAddr: BacnetAddr { addr: "AO49", dis: "DMPR_POS" } }
     DischargeAirFlowSensor { bacnetAddr: BacnetAddr { addr: "AO75", dis: "FLOW" } }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO76", dis: "CTL_FLOW_MIN" }, min }
     DischargeAirFlowSp { bacnetAddr: BacnetAddr { addr: "AO77", dis: "CTL_FLOW_MAX" }, max }
