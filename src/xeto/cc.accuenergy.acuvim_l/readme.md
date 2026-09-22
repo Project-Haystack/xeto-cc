@@ -21,7 +21,7 @@ defined (`AcuvimEL*`); Acuvim-CL specs are planned future work.
 
 ## Wiring Configurations
 
-The meter supports five voltage wiring modes (register 1003H): 3LN, 1LN,
+The meter supports five voltage wiring modes (Modicon register 404100): 3LN, 1LN,
 2LL, 3LL, and 1LL. The 3LN-2.5 element configuration uses the 3LN setting.
 The same Modbus registers are reused across wiring modes; in 2LL/3LL modes
 the voltage THD registers report line-to-line THD (V12, V31, V23) rather
@@ -42,11 +42,11 @@ Concrete Acuvim-EL types: `AcuvimELElecAc3LNMeter`, `AcuvimELElecAc1LNMeter`,
 
 Point scale factors assume the following meter settings:
 
-- Real-Time Reading mode (register 101DH) set to Primary; values include
-  PT/CT ratios with no external multiplier
-- Energy Display mode (register 1019H) set to Secondary or Primary 0.01kWh;
-  energy registers convert with Rx/1000 (`*0.001` scale)
-- Power factor convention IEC (register 1015H, factory default)
+- Real-Time Reading mode (Modicon register 404126) set to Primary; values
+  include PT/CT ratios with no external multiplier
+- Energy Display mode (Modicon register 404122) set to Secondary or Primary
+  0.01kWh; energy registers convert with Rx/1000 (`*0.001` scale)
+- Power factor convention IEC (Modicon register 404118, factory default)
 - Energy calculating mode Full, so power factor points are true power factor
 
 ## Omitted BACnet Objects
