@@ -3,6 +3,7 @@ pragma: Lib <
   version: "0.1.0"
   depends: {
     { lib: "sys" }
+    { lib: "sys.files" }
     { lib: "ph" }
     { lib: "ph.points" }
     { lib: "ph.points.sugar" }
