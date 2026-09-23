@@ -13,28 +13,28 @@
 // use 3 line-to-line voltage channels.
 Acuvim2ElecAc3LLMeter : Acuvim2ElecAcMeter & ElecAc3LLMeter {
   points: {
-    reg16474: ElecAcPhaseQualityVoltageSensor {
+    reg16474: ElecAcPhaseQualityVoltageSensor? {
       totalHarmonicDistortion
       phase: "L1-L2"
       dis: "THD_V12"
       bacnetCurAddr: { addr: "AI64" }
       modbusCurAddr: { addr: "416475", encoding: "s2", scale: "*0.01" }
     }
-    reg16475: ElecAcPhaseQualityVoltageSensor {
+    reg16475: ElecAcPhaseQualityVoltageSensor? {
       totalHarmonicDistortion
       phase: "L3-L1"
       dis: "THD_V31"
       bacnetCurAddr: { addr: "AI65" }
       modbusCurAddr: { addr: "416476", encoding: "s2", scale: "*0.01" }
     }
-    reg16476: ElecAcPhaseQualityVoltageSensor {
+    reg16476: ElecAcPhaseQualityVoltageSensor? {
       totalHarmonicDistortion
       phase: "L2-L3"
       dis: "THD_V23"
       bacnetCurAddr: { addr: "AI66" }
       modbusCurAddr: { addr: "416477", encoding: "s2", scale: "*0.01" }
     }
-    reg16477: ElecAcLLAvgQualityVoltageSensor {
+    reg16477: ElecAcLLAvgQualityVoltageSensor? {
       totalHarmonicDistortion
       dis: "THD_avg"
       bacnetCurAddr: { addr: "AI67" }
@@ -47,1375 +47,1375 @@ Acuvim2ElecAc3LLMeter : Acuvim2ElecAcMeter & ElecAc3LLMeter {
     // through 6-30)
     //////////////////////////////////////////////////////////////////
 
-    reg16482: ElecAcPhaseQualityVoltageSensor {
+    reg16482: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 2
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 2nd Harmonic"
       modbusCurAddr: { addr: "416483", encoding: "s2", scale: "*0.01" }
     }
-    reg16483: ElecAcPhaseQualityVoltageSensor {
+    reg16483: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 3
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 3rd Harmonic"
       modbusCurAddr: { addr: "416484", encoding: "s2", scale: "*0.01" }
     }
-    reg16484: ElecAcPhaseQualityVoltageSensor {
+    reg16484: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 4
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 4th Harmonic"
       modbusCurAddr: { addr: "416485", encoding: "s2", scale: "*0.01" }
     }
-    reg16485: ElecAcPhaseQualityVoltageSensor {
+    reg16485: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 5
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 5th Harmonic"
       modbusCurAddr: { addr: "416486", encoding: "s2", scale: "*0.01" }
     }
-    reg16486: ElecAcPhaseQualityVoltageSensor {
+    reg16486: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 6
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 6th Harmonic"
       modbusCurAddr: { addr: "416487", encoding: "s2", scale: "*0.01" }
     }
-    reg16487: ElecAcPhaseQualityVoltageSensor {
+    reg16487: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 7
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 7th Harmonic"
       modbusCurAddr: { addr: "416488", encoding: "s2", scale: "*0.01" }
     }
-    reg16488: ElecAcPhaseQualityVoltageSensor {
+    reg16488: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 8
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 8th Harmonic"
       modbusCurAddr: { addr: "416489", encoding: "s2", scale: "*0.01" }
     }
-    reg16489: ElecAcPhaseQualityVoltageSensor {
+    reg16489: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 9
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 9th Harmonic"
       modbusCurAddr: { addr: "416490", encoding: "s2", scale: "*0.01" }
     }
-    reg16490: ElecAcPhaseQualityVoltageSensor {
+    reg16490: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 10
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 10th Harmonic"
       modbusCurAddr: { addr: "416491", encoding: "s2", scale: "*0.01" }
     }
-    reg16491: ElecAcPhaseQualityVoltageSensor {
+    reg16491: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 11
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 11th Harmonic"
       modbusCurAddr: { addr: "416492", encoding: "s2", scale: "*0.01" }
     }
-    reg16492: ElecAcPhaseQualityVoltageSensor {
+    reg16492: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 12
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 12th Harmonic"
       modbusCurAddr: { addr: "416493", encoding: "s2", scale: "*0.01" }
     }
-    reg16493: ElecAcPhaseQualityVoltageSensor {
+    reg16493: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 13
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 13th Harmonic"
       modbusCurAddr: { addr: "416494", encoding: "s2", scale: "*0.01" }
     }
-    reg16494: ElecAcPhaseQualityVoltageSensor {
+    reg16494: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 14
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 14th Harmonic"
       modbusCurAddr: { addr: "416495", encoding: "s2", scale: "*0.01" }
     }
-    reg16495: ElecAcPhaseQualityVoltageSensor {
+    reg16495: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 15
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 15th Harmonic"
       modbusCurAddr: { addr: "416496", encoding: "s2", scale: "*0.01" }
     }
-    reg16496: ElecAcPhaseQualityVoltageSensor {
+    reg16496: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 16
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 16th Harmonic"
       modbusCurAddr: { addr: "416497", encoding: "s2", scale: "*0.01" }
     }
-    reg16497: ElecAcPhaseQualityVoltageSensor {
+    reg16497: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 17
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 17th Harmonic"
       modbusCurAddr: { addr: "416498", encoding: "s2", scale: "*0.01" }
     }
-    reg16498: ElecAcPhaseQualityVoltageSensor {
+    reg16498: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 18
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 18th Harmonic"
       modbusCurAddr: { addr: "416499", encoding: "s2", scale: "*0.01" }
     }
-    reg16499: ElecAcPhaseQualityVoltageSensor {
+    reg16499: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 19
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 19th Harmonic"
       modbusCurAddr: { addr: "416500", encoding: "s2", scale: "*0.01" }
     }
-    reg16500: ElecAcPhaseQualityVoltageSensor {
+    reg16500: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 20
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 20th Harmonic"
       modbusCurAddr: { addr: "416501", encoding: "s2", scale: "*0.01" }
     }
-    reg16501: ElecAcPhaseQualityVoltageSensor {
+    reg16501: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 21
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 21st Harmonic"
       modbusCurAddr: { addr: "416502", encoding: "s2", scale: "*0.01" }
     }
-    reg16502: ElecAcPhaseQualityVoltageSensor {
+    reg16502: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 22
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 22nd Harmonic"
       modbusCurAddr: { addr: "416503", encoding: "s2", scale: "*0.01" }
     }
-    reg16503: ElecAcPhaseQualityVoltageSensor {
+    reg16503: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 23
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 23rd Harmonic"
       modbusCurAddr: { addr: "416504", encoding: "s2", scale: "*0.01" }
     }
-    reg16504: ElecAcPhaseQualityVoltageSensor {
+    reg16504: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 24
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 24th Harmonic"
       modbusCurAddr: { addr: "416505", encoding: "s2", scale: "*0.01" }
     }
-    reg16505: ElecAcPhaseQualityVoltageSensor {
+    reg16505: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 25
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 25th Harmonic"
       modbusCurAddr: { addr: "416506", encoding: "s2", scale: "*0.01" }
     }
-    reg16506: ElecAcPhaseQualityVoltageSensor {
+    reg16506: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 26
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 26th Harmonic"
       modbusCurAddr: { addr: "416507", encoding: "s2", scale: "*0.01" }
     }
-    reg16507: ElecAcPhaseQualityVoltageSensor {
+    reg16507: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 27
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 27th Harmonic"
       modbusCurAddr: { addr: "416508", encoding: "s2", scale: "*0.01" }
     }
-    reg16508: ElecAcPhaseQualityVoltageSensor {
+    reg16508: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 28
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 28th Harmonic"
       modbusCurAddr: { addr: "416509", encoding: "s2", scale: "*0.01" }
     }
-    reg16509: ElecAcPhaseQualityVoltageSensor {
+    reg16509: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 29
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 29th Harmonic"
       modbusCurAddr: { addr: "416510", encoding: "s2", scale: "*0.01" }
     }
-    reg16510: ElecAcPhaseQualityVoltageSensor {
+    reg16510: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 30
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 30th Harmonic"
       modbusCurAddr: { addr: "416511", encoding: "s2", scale: "*0.01" }
     }
-    reg16511: ElecAcPhaseQualityVoltageSensor {
+    reg16511: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 31
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 31st Harmonic"
       modbusCurAddr: { addr: "416512", encoding: "s2", scale: "*0.01" }
     }
-    reg16512: ElecAcPhaseQualityVoltageSensor {
+    reg16512: ElecAcPhaseQualityVoltageSensor? {
       oddTotalHarmonicDistortion
       phase: "L1-L2"
       dis: "Odd THD_V12"
       modbusCurAddr: { addr: "416513", encoding: "s2", scale: "*0.01" }
     }
-    reg16513: ElecAcPhaseQualityVoltageSensor {
+    reg16513: ElecAcPhaseQualityVoltageSensor? {
       evenTotalHarmonicDistortion
       phase: "L1-L2"
       dis: "Even THD_V12"
       modbusCurAddr: { addr: "416514", encoding: "s2", scale: "*0.01" }
     }
-    reg16514: ElecAcPhaseQualityVoltageSensor {
+    reg16514: ElecAcPhaseQualityVoltageSensor? {
       crestFactor
       phase: "L1-L2"
       dis: "Crest Factor V12"
       modbusCurAddr: { addr: "416515", encoding: "s2", scale: "*0.01" }
     }
-    reg16515: ElecAcPhaseQualityVoltageSensor {
+    reg16515: ElecAcPhaseQualityVoltageSensor? {
       telephoneHarmonicFormFactor
       phase: "L1-L2"
       dis: "THFF_V12"
       modbusCurAddr: { addr: "416516", encoding: "s2", scale: "*0.01" }
     }
-    reg16516: ElecAcPhaseQualityVoltageSensor {
+    reg16516: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 2
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 2nd Harmonic"
       modbusCurAddr: { addr: "416517", encoding: "s2", scale: "*0.01" }
     }
-    reg16517: ElecAcPhaseQualityVoltageSensor {
+    reg16517: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 3
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 3rd Harmonic"
       modbusCurAddr: { addr: "416518", encoding: "s2", scale: "*0.01" }
     }
-    reg16518: ElecAcPhaseQualityVoltageSensor {
+    reg16518: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 4
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 4th Harmonic"
       modbusCurAddr: { addr: "416519", encoding: "s2", scale: "*0.01" }
     }
-    reg16519: ElecAcPhaseQualityVoltageSensor {
+    reg16519: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 5
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 5th Harmonic"
       modbusCurAddr: { addr: "416520", encoding: "s2", scale: "*0.01" }
     }
-    reg16520: ElecAcPhaseQualityVoltageSensor {
+    reg16520: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 6
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 6th Harmonic"
       modbusCurAddr: { addr: "416521", encoding: "s2", scale: "*0.01" }
     }
-    reg16521: ElecAcPhaseQualityVoltageSensor {
+    reg16521: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 7
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 7th Harmonic"
       modbusCurAddr: { addr: "416522", encoding: "s2", scale: "*0.01" }
     }
-    reg16522: ElecAcPhaseQualityVoltageSensor {
+    reg16522: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 8
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 8th Harmonic"
       modbusCurAddr: { addr: "416523", encoding: "s2", scale: "*0.01" }
     }
-    reg16523: ElecAcPhaseQualityVoltageSensor {
+    reg16523: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 9
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 9th Harmonic"
       modbusCurAddr: { addr: "416524", encoding: "s2", scale: "*0.01" }
     }
-    reg16524: ElecAcPhaseQualityVoltageSensor {
+    reg16524: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 10
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 10th Harmonic"
       modbusCurAddr: { addr: "416525", encoding: "s2", scale: "*0.01" }
     }
-    reg16525: ElecAcPhaseQualityVoltageSensor {
+    reg16525: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 11
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 11th Harmonic"
       modbusCurAddr: { addr: "416526", encoding: "s2", scale: "*0.01" }
     }
-    reg16526: ElecAcPhaseQualityVoltageSensor {
+    reg16526: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 12
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 12th Harmonic"
       modbusCurAddr: { addr: "416527", encoding: "s2", scale: "*0.01" }
     }
-    reg16527: ElecAcPhaseQualityVoltageSensor {
+    reg16527: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 13
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 13th Harmonic"
       modbusCurAddr: { addr: "416528", encoding: "s2", scale: "*0.01" }
     }
-    reg16528: ElecAcPhaseQualityVoltageSensor {
+    reg16528: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 14
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 14th Harmonic"
       modbusCurAddr: { addr: "416529", encoding: "s2", scale: "*0.01" }
     }
-    reg16529: ElecAcPhaseQualityVoltageSensor {
+    reg16529: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 15
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 15th Harmonic"
       modbusCurAddr: { addr: "416530", encoding: "s2", scale: "*0.01" }
     }
-    reg16530: ElecAcPhaseQualityVoltageSensor {
+    reg16530: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 16
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 16th Harmonic"
       modbusCurAddr: { addr: "416531", encoding: "s2", scale: "*0.01" }
     }
-    reg16531: ElecAcPhaseQualityVoltageSensor {
+    reg16531: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 17
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 17th Harmonic"
       modbusCurAddr: { addr: "416532", encoding: "s2", scale: "*0.01" }
     }
-    reg16532: ElecAcPhaseQualityVoltageSensor {
+    reg16532: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 18
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 18th Harmonic"
       modbusCurAddr: { addr: "416533", encoding: "s2", scale: "*0.01" }
     }
-    reg16533: ElecAcPhaseQualityVoltageSensor {
+    reg16533: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 19
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 19th Harmonic"
       modbusCurAddr: { addr: "416534", encoding: "s2", scale: "*0.01" }
     }
-    reg16534: ElecAcPhaseQualityVoltageSensor {
+    reg16534: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 20
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 20th Harmonic"
       modbusCurAddr: { addr: "416535", encoding: "s2", scale: "*0.01" }
     }
-    reg16535: ElecAcPhaseQualityVoltageSensor {
+    reg16535: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 21
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 21st Harmonic"
       modbusCurAddr: { addr: "416536", encoding: "s2", scale: "*0.01" }
     }
-    reg16536: ElecAcPhaseQualityVoltageSensor {
+    reg16536: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 22
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 22nd Harmonic"
       modbusCurAddr: { addr: "416537", encoding: "s2", scale: "*0.01" }
     }
-    reg16537: ElecAcPhaseQualityVoltageSensor {
+    reg16537: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 23
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 23rd Harmonic"
       modbusCurAddr: { addr: "416538", encoding: "s2", scale: "*0.01" }
     }
-    reg16538: ElecAcPhaseQualityVoltageSensor {
+    reg16538: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 24
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 24th Harmonic"
       modbusCurAddr: { addr: "416539", encoding: "s2", scale: "*0.01" }
     }
-    reg16539: ElecAcPhaseQualityVoltageSensor {
+    reg16539: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 25
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 25th Harmonic"
       modbusCurAddr: { addr: "416540", encoding: "s2", scale: "*0.01" }
     }
-    reg16540: ElecAcPhaseQualityVoltageSensor {
+    reg16540: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 26
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 26th Harmonic"
       modbusCurAddr: { addr: "416541", encoding: "s2", scale: "*0.01" }
     }
-    reg16541: ElecAcPhaseQualityVoltageSensor {
+    reg16541: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 27
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 27th Harmonic"
       modbusCurAddr: { addr: "416542", encoding: "s2", scale: "*0.01" }
     }
-    reg16542: ElecAcPhaseQualityVoltageSensor {
+    reg16542: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 28
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 28th Harmonic"
       modbusCurAddr: { addr: "416543", encoding: "s2", scale: "*0.01" }
     }
-    reg16543: ElecAcPhaseQualityVoltageSensor {
+    reg16543: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 29
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 29th Harmonic"
       modbusCurAddr: { addr: "416544", encoding: "s2", scale: "*0.01" }
     }
-    reg16544: ElecAcPhaseQualityVoltageSensor {
+    reg16544: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 30
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 30th Harmonic"
       modbusCurAddr: { addr: "416545", encoding: "s2", scale: "*0.01" }
     }
-    reg16545: ElecAcPhaseQualityVoltageSensor {
+    reg16545: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 31
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 31st Harmonic"
       modbusCurAddr: { addr: "416546", encoding: "s2", scale: "*0.01" }
     }
-    reg16546: ElecAcPhaseQualityVoltageSensor {
+    reg16546: ElecAcPhaseQualityVoltageSensor? {
       oddTotalHarmonicDistortion
       phase: "L3-L1"
       dis: "Odd THD_V31"
       modbusCurAddr: { addr: "416547", encoding: "s2", scale: "*0.01" }
     }
-    reg16547: ElecAcPhaseQualityVoltageSensor {
+    reg16547: ElecAcPhaseQualityVoltageSensor? {
       evenTotalHarmonicDistortion
       phase: "L3-L1"
       dis: "Even THD_V31"
       modbusCurAddr: { addr: "416548", encoding: "s2", scale: "*0.01" }
     }
-    reg16548: ElecAcPhaseQualityVoltageSensor {
+    reg16548: ElecAcPhaseQualityVoltageSensor? {
       crestFactor
       phase: "L3-L1"
       dis: "Crest Factor V31"
       modbusCurAddr: { addr: "416549", encoding: "s2", scale: "*0.01" }
     }
-    reg16549: ElecAcPhaseQualityVoltageSensor {
+    reg16549: ElecAcPhaseQualityVoltageSensor? {
       telephoneHarmonicFormFactor
       phase: "L3-L1"
       dis: "THFF_V31"
       modbusCurAddr: { addr: "416550", encoding: "s2", scale: "*0.01" }
     }
-    reg16550: ElecAcPhaseQualityVoltageSensor {
+    reg16550: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 2
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 2nd Harmonic"
       modbusCurAddr: { addr: "416551", encoding: "s2", scale: "*0.01" }
     }
-    reg16551: ElecAcPhaseQualityVoltageSensor {
+    reg16551: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 3
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 3rd Harmonic"
       modbusCurAddr: { addr: "416552", encoding: "s2", scale: "*0.01" }
     }
-    reg16552: ElecAcPhaseQualityVoltageSensor {
+    reg16552: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 4
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 4th Harmonic"
       modbusCurAddr: { addr: "416553", encoding: "s2", scale: "*0.01" }
     }
-    reg16553: ElecAcPhaseQualityVoltageSensor {
+    reg16553: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 5
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 5th Harmonic"
       modbusCurAddr: { addr: "416554", encoding: "s2", scale: "*0.01" }
     }
-    reg16554: ElecAcPhaseQualityVoltageSensor {
+    reg16554: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 6
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 6th Harmonic"
       modbusCurAddr: { addr: "416555", encoding: "s2", scale: "*0.01" }
     }
-    reg16555: ElecAcPhaseQualityVoltageSensor {
+    reg16555: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 7
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 7th Harmonic"
       modbusCurAddr: { addr: "416556", encoding: "s2", scale: "*0.01" }
     }
-    reg16556: ElecAcPhaseQualityVoltageSensor {
+    reg16556: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 8
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 8th Harmonic"
       modbusCurAddr: { addr: "416557", encoding: "s2", scale: "*0.01" }
     }
-    reg16557: ElecAcPhaseQualityVoltageSensor {
+    reg16557: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 9
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 9th Harmonic"
       modbusCurAddr: { addr: "416558", encoding: "s2", scale: "*0.01" }
     }
-    reg16558: ElecAcPhaseQualityVoltageSensor {
+    reg16558: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 10
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 10th Harmonic"
       modbusCurAddr: { addr: "416559", encoding: "s2", scale: "*0.01" }
     }
-    reg16559: ElecAcPhaseQualityVoltageSensor {
+    reg16559: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 11
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 11th Harmonic"
       modbusCurAddr: { addr: "416560", encoding: "s2", scale: "*0.01" }
     }
-    reg16560: ElecAcPhaseQualityVoltageSensor {
+    reg16560: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 12
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 12th Harmonic"
       modbusCurAddr: { addr: "416561", encoding: "s2", scale: "*0.01" }
     }
-    reg16561: ElecAcPhaseQualityVoltageSensor {
+    reg16561: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 13
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 13th Harmonic"
       modbusCurAddr: { addr: "416562", encoding: "s2", scale: "*0.01" }
     }
-    reg16562: ElecAcPhaseQualityVoltageSensor {
+    reg16562: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 14
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 14th Harmonic"
       modbusCurAddr: { addr: "416563", encoding: "s2", scale: "*0.01" }
     }
-    reg16563: ElecAcPhaseQualityVoltageSensor {
+    reg16563: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 15
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 15th Harmonic"
       modbusCurAddr: { addr: "416564", encoding: "s2", scale: "*0.01" }
     }
-    reg16564: ElecAcPhaseQualityVoltageSensor {
+    reg16564: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 16
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 16th Harmonic"
       modbusCurAddr: { addr: "416565", encoding: "s2", scale: "*0.01" }
     }
-    reg16565: ElecAcPhaseQualityVoltageSensor {
+    reg16565: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 17
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 17th Harmonic"
       modbusCurAddr: { addr: "416566", encoding: "s2", scale: "*0.01" }
     }
-    reg16566: ElecAcPhaseQualityVoltageSensor {
+    reg16566: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 18
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 18th Harmonic"
       modbusCurAddr: { addr: "416567", encoding: "s2", scale: "*0.01" }
     }
-    reg16567: ElecAcPhaseQualityVoltageSensor {
+    reg16567: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 19
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 19th Harmonic"
       modbusCurAddr: { addr: "416568", encoding: "s2", scale: "*0.01" }
     }
-    reg16568: ElecAcPhaseQualityVoltageSensor {
+    reg16568: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 20
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 20th Harmonic"
       modbusCurAddr: { addr: "416569", encoding: "s2", scale: "*0.01" }
     }
-    reg16569: ElecAcPhaseQualityVoltageSensor {
+    reg16569: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 21
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 21st Harmonic"
       modbusCurAddr: { addr: "416570", encoding: "s2", scale: "*0.01" }
     }
-    reg16570: ElecAcPhaseQualityVoltageSensor {
+    reg16570: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 22
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 22nd Harmonic"
       modbusCurAddr: { addr: "416571", encoding: "s2", scale: "*0.01" }
     }
-    reg16571: ElecAcPhaseQualityVoltageSensor {
+    reg16571: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 23
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 23rd Harmonic"
       modbusCurAddr: { addr: "416572", encoding: "s2", scale: "*0.01" }
     }
-    reg16572: ElecAcPhaseQualityVoltageSensor {
+    reg16572: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 24
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 24th Harmonic"
       modbusCurAddr: { addr: "416573", encoding: "s2", scale: "*0.01" }
     }
-    reg16573: ElecAcPhaseQualityVoltageSensor {
+    reg16573: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 25
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 25th Harmonic"
       modbusCurAddr: { addr: "416574", encoding: "s2", scale: "*0.01" }
     }
-    reg16574: ElecAcPhaseQualityVoltageSensor {
+    reg16574: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 26
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 26th Harmonic"
       modbusCurAddr: { addr: "416575", encoding: "s2", scale: "*0.01" }
     }
-    reg16575: ElecAcPhaseQualityVoltageSensor {
+    reg16575: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 27
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 27th Harmonic"
       modbusCurAddr: { addr: "416576", encoding: "s2", scale: "*0.01" }
     }
-    reg16576: ElecAcPhaseQualityVoltageSensor {
+    reg16576: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 28
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 28th Harmonic"
       modbusCurAddr: { addr: "416577", encoding: "s2", scale: "*0.01" }
     }
-    reg16577: ElecAcPhaseQualityVoltageSensor {
+    reg16577: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 29
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 29th Harmonic"
       modbusCurAddr: { addr: "416578", encoding: "s2", scale: "*0.01" }
     }
-    reg16578: ElecAcPhaseQualityVoltageSensor {
+    reg16578: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 30
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 30th Harmonic"
       modbusCurAddr: { addr: "416579", encoding: "s2", scale: "*0.01" }
     }
-    reg16579: ElecAcPhaseQualityVoltageSensor {
+    reg16579: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 31
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 31st Harmonic"
       modbusCurAddr: { addr: "416580", encoding: "s2", scale: "*0.01" }
     }
-    reg16580: ElecAcPhaseQualityVoltageSensor {
+    reg16580: ElecAcPhaseQualityVoltageSensor? {
       oddTotalHarmonicDistortion
       phase: "L2-L3"
       dis: "Odd THD_V23"
       modbusCurAddr: { addr: "416581", encoding: "s2", scale: "*0.01" }
     }
-    reg16581: ElecAcPhaseQualityVoltageSensor {
+    reg16581: ElecAcPhaseQualityVoltageSensor? {
       evenTotalHarmonicDistortion
       phase: "L2-L3"
       dis: "Even THD_V23"
       modbusCurAddr: { addr: "416582", encoding: "s2", scale: "*0.01" }
     }
-    reg16582: ElecAcPhaseQualityVoltageSensor {
+    reg16582: ElecAcPhaseQualityVoltageSensor? {
       crestFactor
       phase: "L2-L3"
       dis: "Crest Factor V23"
       modbusCurAddr: { addr: "416583", encoding: "s2", scale: "*0.01" }
     }
-    reg16583: ElecAcPhaseQualityVoltageSensor {
+    reg16583: ElecAcPhaseQualityVoltageSensor? {
       telephoneHarmonicFormFactor
       phase: "L2-L3"
       dis: "THFF_V23"
       modbusCurAddr: { addr: "416584", encoding: "s2", scale: "*0.01" }
     }
 
-    reg17664: ElecAcPhaseQualityVoltageSensor {
+    reg17664: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 32
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 32nd Harmonic"
       modbusCurAddr: { addr: "417665", encoding: "u2", scale: "*0.01" }
     }
-    reg17665: ElecAcPhaseQualityVoltageSensor {
+    reg17665: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 33
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 33rd Harmonic"
       modbusCurAddr: { addr: "417666", encoding: "u2", scale: "*0.01" }
     }
-    reg17666: ElecAcPhaseQualityVoltageSensor {
+    reg17666: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 34
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 34th Harmonic"
       modbusCurAddr: { addr: "417667", encoding: "u2", scale: "*0.01" }
     }
-    reg17667: ElecAcPhaseQualityVoltageSensor {
+    reg17667: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 35
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 35th Harmonic"
       modbusCurAddr: { addr: "417668", encoding: "u2", scale: "*0.01" }
     }
-    reg17668: ElecAcPhaseQualityVoltageSensor {
+    reg17668: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 36
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 36th Harmonic"
       modbusCurAddr: { addr: "417669", encoding: "u2", scale: "*0.01" }
     }
-    reg17669: ElecAcPhaseQualityVoltageSensor {
+    reg17669: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 37
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 37th Harmonic"
       modbusCurAddr: { addr: "417670", encoding: "u2", scale: "*0.01" }
     }
-    reg17670: ElecAcPhaseQualityVoltageSensor {
+    reg17670: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 38
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 38th Harmonic"
       modbusCurAddr: { addr: "417671", encoding: "u2", scale: "*0.01" }
     }
-    reg17671: ElecAcPhaseQualityVoltageSensor {
+    reg17671: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 39
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 39th Harmonic"
       modbusCurAddr: { addr: "417672", encoding: "u2", scale: "*0.01" }
     }
-    reg17672: ElecAcPhaseQualityVoltageSensor {
+    reg17672: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 40
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 40th Harmonic"
       modbusCurAddr: { addr: "417673", encoding: "u2", scale: "*0.01" }
     }
-    reg17673: ElecAcPhaseQualityVoltageSensor {
+    reg17673: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 41
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 41st Harmonic"
       modbusCurAddr: { addr: "417674", encoding: "u2", scale: "*0.01" }
     }
-    reg17674: ElecAcPhaseQualityVoltageSensor {
+    reg17674: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 42
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 42nd Harmonic"
       modbusCurAddr: { addr: "417675", encoding: "u2", scale: "*0.01" }
     }
-    reg17675: ElecAcPhaseQualityVoltageSensor {
+    reg17675: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 43
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 43rd Harmonic"
       modbusCurAddr: { addr: "417676", encoding: "u2", scale: "*0.01" }
     }
-    reg17676: ElecAcPhaseQualityVoltageSensor {
+    reg17676: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 44
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 44th Harmonic"
       modbusCurAddr: { addr: "417677", encoding: "u2", scale: "*0.01" }
     }
-    reg17677: ElecAcPhaseQualityVoltageSensor {
+    reg17677: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 45
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 45th Harmonic"
       modbusCurAddr: { addr: "417678", encoding: "u2", scale: "*0.01" }
     }
-    reg17678: ElecAcPhaseQualityVoltageSensor {
+    reg17678: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 46
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 46th Harmonic"
       modbusCurAddr: { addr: "417679", encoding: "u2", scale: "*0.01" }
     }
-    reg17679: ElecAcPhaseQualityVoltageSensor {
+    reg17679: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 47
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 47th Harmonic"
       modbusCurAddr: { addr: "417680", encoding: "u2", scale: "*0.01" }
     }
-    reg17680: ElecAcPhaseQualityVoltageSensor {
+    reg17680: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 48
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 48th Harmonic"
       modbusCurAddr: { addr: "417681", encoding: "u2", scale: "*0.01" }
     }
-    reg17681: ElecAcPhaseQualityVoltageSensor {
+    reg17681: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 49
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 49th Harmonic"
       modbusCurAddr: { addr: "417682", encoding: "u2", scale: "*0.01" }
     }
-    reg17682: ElecAcPhaseQualityVoltageSensor {
+    reg17682: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 50
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 50th Harmonic"
       modbusCurAddr: { addr: "417683", encoding: "u2", scale: "*0.01" }
     }
-    reg17683: ElecAcPhaseQualityVoltageSensor {
+    reg17683: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 51
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 51st Harmonic"
       modbusCurAddr: { addr: "417684", encoding: "u2", scale: "*0.01" }
     }
-    reg17684: ElecAcPhaseQualityVoltageSensor {
+    reg17684: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 52
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 52nd Harmonic"
       modbusCurAddr: { addr: "417685", encoding: "u2", scale: "*0.01" }
     }
-    reg17685: ElecAcPhaseQualityVoltageSensor {
+    reg17685: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 53
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 53rd Harmonic"
       modbusCurAddr: { addr: "417686", encoding: "u2", scale: "*0.01" }
     }
-    reg17686: ElecAcPhaseQualityVoltageSensor {
+    reg17686: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 54
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 54th Harmonic"
       modbusCurAddr: { addr: "417687", encoding: "u2", scale: "*0.01" }
     }
-    reg17687: ElecAcPhaseQualityVoltageSensor {
+    reg17687: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 55
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 55th Harmonic"
       modbusCurAddr: { addr: "417688", encoding: "u2", scale: "*0.01" }
     }
-    reg17688: ElecAcPhaseQualityVoltageSensor {
+    reg17688: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 56
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 56th Harmonic"
       modbusCurAddr: { addr: "417689", encoding: "u2", scale: "*0.01" }
     }
-    reg17689: ElecAcPhaseQualityVoltageSensor {
+    reg17689: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 57
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 57th Harmonic"
       modbusCurAddr: { addr: "417690", encoding: "u2", scale: "*0.01" }
     }
-    reg17690: ElecAcPhaseQualityVoltageSensor {
+    reg17690: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 58
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 58th Harmonic"
       modbusCurAddr: { addr: "417691", encoding: "u2", scale: "*0.01" }
     }
-    reg17691: ElecAcPhaseQualityVoltageSensor {
+    reg17691: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 59
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 59th Harmonic"
       modbusCurAddr: { addr: "417692", encoding: "u2", scale: "*0.01" }
     }
-    reg17692: ElecAcPhaseQualityVoltageSensor {
+    reg17692: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 60
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 60th Harmonic"
       modbusCurAddr: { addr: "417693", encoding: "u2", scale: "*0.01" }
     }
-    reg17693: ElecAcPhaseQualityVoltageSensor {
+    reg17693: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 61
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 61st Harmonic"
       modbusCurAddr: { addr: "417694", encoding: "u2", scale: "*0.01" }
     }
-    reg17694: ElecAcPhaseQualityVoltageSensor {
+    reg17694: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 62
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 62nd Harmonic"
       modbusCurAddr: { addr: "417695", encoding: "u2", scale: "*0.01" }
     }
-    reg17695: ElecAcPhaseQualityVoltageSensor {
+    reg17695: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 63
       individualHarmonicDistortion
       phase: "L1-L2"
       dis: "V12 63rd Harmonic"
       modbusCurAddr: { addr: "417696", encoding: "u2", scale: "*0.01" }
     }
-    reg17696: ElecAcPhaseQualityVoltageSensor {
+    reg17696: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 32
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 32nd Harmonic"
       modbusCurAddr: { addr: "417697", encoding: "u2", scale: "*0.01" }
     }
-    reg17697: ElecAcPhaseQualityVoltageSensor {
+    reg17697: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 33
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 33rd Harmonic"
       modbusCurAddr: { addr: "417698", encoding: "u2", scale: "*0.01" }
     }
-    reg17698: ElecAcPhaseQualityVoltageSensor {
+    reg17698: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 34
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 34th Harmonic"
       modbusCurAddr: { addr: "417699", encoding: "u2", scale: "*0.01" }
     }
-    reg17699: ElecAcPhaseQualityVoltageSensor {
+    reg17699: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 35
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 35th Harmonic"
       modbusCurAddr: { addr: "417700", encoding: "u2", scale: "*0.01" }
     }
-    reg17700: ElecAcPhaseQualityVoltageSensor {
+    reg17700: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 36
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 36th Harmonic"
       modbusCurAddr: { addr: "417701", encoding: "u2", scale: "*0.01" }
     }
-    reg17701: ElecAcPhaseQualityVoltageSensor {
+    reg17701: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 37
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 37th Harmonic"
       modbusCurAddr: { addr: "417702", encoding: "u2", scale: "*0.01" }
     }
-    reg17702: ElecAcPhaseQualityVoltageSensor {
+    reg17702: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 38
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 38th Harmonic"
       modbusCurAddr: { addr: "417703", encoding: "u2", scale: "*0.01" }
     }
-    reg17703: ElecAcPhaseQualityVoltageSensor {
+    reg17703: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 39
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 39th Harmonic"
       modbusCurAddr: { addr: "417704", encoding: "u2", scale: "*0.01" }
     }
-    reg17704: ElecAcPhaseQualityVoltageSensor {
+    reg17704: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 40
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 40th Harmonic"
       modbusCurAddr: { addr: "417705", encoding: "u2", scale: "*0.01" }
     }
-    reg17705: ElecAcPhaseQualityVoltageSensor {
+    reg17705: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 41
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 41st Harmonic"
       modbusCurAddr: { addr: "417706", encoding: "u2", scale: "*0.01" }
     }
-    reg17706: ElecAcPhaseQualityVoltageSensor {
+    reg17706: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 42
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 42nd Harmonic"
       modbusCurAddr: { addr: "417707", encoding: "u2", scale: "*0.01" }
     }
-    reg17707: ElecAcPhaseQualityVoltageSensor {
+    reg17707: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 43
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 43rd Harmonic"
       modbusCurAddr: { addr: "417708", encoding: "u2", scale: "*0.01" }
     }
-    reg17708: ElecAcPhaseQualityVoltageSensor {
+    reg17708: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 44
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 44th Harmonic"
       modbusCurAddr: { addr: "417709", encoding: "u2", scale: "*0.01" }
     }
-    reg17709: ElecAcPhaseQualityVoltageSensor {
+    reg17709: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 45
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 45th Harmonic"
       modbusCurAddr: { addr: "417710", encoding: "u2", scale: "*0.01" }
     }
-    reg17710: ElecAcPhaseQualityVoltageSensor {
+    reg17710: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 46
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 46th Harmonic"
       modbusCurAddr: { addr: "417711", encoding: "u2", scale: "*0.01" }
     }
-    reg17711: ElecAcPhaseQualityVoltageSensor {
+    reg17711: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 47
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 47th Harmonic"
       modbusCurAddr: { addr: "417712", encoding: "u2", scale: "*0.01" }
     }
-    reg17712: ElecAcPhaseQualityVoltageSensor {
+    reg17712: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 48
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 48th Harmonic"
       modbusCurAddr: { addr: "417713", encoding: "u2", scale: "*0.01" }
     }
-    reg17713: ElecAcPhaseQualityVoltageSensor {
+    reg17713: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 49
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 49th Harmonic"
       modbusCurAddr: { addr: "417714", encoding: "u2", scale: "*0.01" }
     }
-    reg17714: ElecAcPhaseQualityVoltageSensor {
+    reg17714: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 50
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 50th Harmonic"
       modbusCurAddr: { addr: "417715", encoding: "u2", scale: "*0.01" }
     }
-    reg17715: ElecAcPhaseQualityVoltageSensor {
+    reg17715: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 51
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 51st Harmonic"
       modbusCurAddr: { addr: "417716", encoding: "u2", scale: "*0.01" }
     }
-    reg17716: ElecAcPhaseQualityVoltageSensor {
+    reg17716: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 52
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 52nd Harmonic"
       modbusCurAddr: { addr: "417717", encoding: "u2", scale: "*0.01" }
     }
-    reg17717: ElecAcPhaseQualityVoltageSensor {
+    reg17717: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 53
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 53rd Harmonic"
       modbusCurAddr: { addr: "417718", encoding: "u2", scale: "*0.01" }
     }
-    reg17718: ElecAcPhaseQualityVoltageSensor {
+    reg17718: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 54
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 54th Harmonic"
       modbusCurAddr: { addr: "417719", encoding: "u2", scale: "*0.01" }
     }
-    reg17719: ElecAcPhaseQualityVoltageSensor {
+    reg17719: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 55
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 55th Harmonic"
       modbusCurAddr: { addr: "417720", encoding: "u2", scale: "*0.01" }
     }
-    reg17720: ElecAcPhaseQualityVoltageSensor {
+    reg17720: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 56
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 56th Harmonic"
       modbusCurAddr: { addr: "417721", encoding: "u2", scale: "*0.01" }
     }
-    reg17721: ElecAcPhaseQualityVoltageSensor {
+    reg17721: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 57
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 57th Harmonic"
       modbusCurAddr: { addr: "417722", encoding: "u2", scale: "*0.01" }
     }
-    reg17722: ElecAcPhaseQualityVoltageSensor {
+    reg17722: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 58
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 58th Harmonic"
       modbusCurAddr: { addr: "417723", encoding: "u2", scale: "*0.01" }
     }
-    reg17723: ElecAcPhaseQualityVoltageSensor {
+    reg17723: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 59
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 59th Harmonic"
       modbusCurAddr: { addr: "417724", encoding: "u2", scale: "*0.01" }
     }
-    reg17724: ElecAcPhaseQualityVoltageSensor {
+    reg17724: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 60
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 60th Harmonic"
       modbusCurAddr: { addr: "417725", encoding: "u2", scale: "*0.01" }
     }
-    reg17725: ElecAcPhaseQualityVoltageSensor {
+    reg17725: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 61
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 61st Harmonic"
       modbusCurAddr: { addr: "417726", encoding: "u2", scale: "*0.01" }
     }
-    reg17726: ElecAcPhaseQualityVoltageSensor {
+    reg17726: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 62
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 62nd Harmonic"
       modbusCurAddr: { addr: "417727", encoding: "u2", scale: "*0.01" }
     }
-    reg17727: ElecAcPhaseQualityVoltageSensor {
+    reg17727: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 63
       individualHarmonicDistortion
       phase: "L3-L1"
       dis: "V31 63rd Harmonic"
       modbusCurAddr: { addr: "417728", encoding: "u2", scale: "*0.01" }
     }
-    reg17728: ElecAcPhaseQualityVoltageSensor {
+    reg17728: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 32
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 32nd Harmonic"
       modbusCurAddr: { addr: "417729", encoding: "u2", scale: "*0.01" }
     }
-    reg17729: ElecAcPhaseQualityVoltageSensor {
+    reg17729: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 33
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 33rd Harmonic"
       modbusCurAddr: { addr: "417730", encoding: "u2", scale: "*0.01" }
     }
-    reg17730: ElecAcPhaseQualityVoltageSensor {
+    reg17730: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 34
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 34th Harmonic"
       modbusCurAddr: { addr: "417731", encoding: "u2", scale: "*0.01" }
     }
-    reg17731: ElecAcPhaseQualityVoltageSensor {
+    reg17731: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 35
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 35th Harmonic"
       modbusCurAddr: { addr: "417732", encoding: "u2", scale: "*0.01" }
     }
-    reg17732: ElecAcPhaseQualityVoltageSensor {
+    reg17732: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 36
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 36th Harmonic"
       modbusCurAddr: { addr: "417733", encoding: "u2", scale: "*0.01" }
     }
-    reg17733: ElecAcPhaseQualityVoltageSensor {
+    reg17733: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 37
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 37th Harmonic"
       modbusCurAddr: { addr: "417734", encoding: "u2", scale: "*0.01" }
     }
-    reg17734: ElecAcPhaseQualityVoltageSensor {
+    reg17734: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 38
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 38th Harmonic"
       modbusCurAddr: { addr: "417735", encoding: "u2", scale: "*0.01" }
     }
-    reg17735: ElecAcPhaseQualityVoltageSensor {
+    reg17735: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 39
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 39th Harmonic"
       modbusCurAddr: { addr: "417736", encoding: "u2", scale: "*0.01" }
     }
-    reg17736: ElecAcPhaseQualityVoltageSensor {
+    reg17736: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 40
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 40th Harmonic"
       modbusCurAddr: { addr: "417737", encoding: "u2", scale: "*0.01" }
     }
-    reg17737: ElecAcPhaseQualityVoltageSensor {
+    reg17737: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 41
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 41st Harmonic"
       modbusCurAddr: { addr: "417738", encoding: "u2", scale: "*0.01" }
     }
-    reg17738: ElecAcPhaseQualityVoltageSensor {
+    reg17738: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 42
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 42nd Harmonic"
       modbusCurAddr: { addr: "417739", encoding: "u2", scale: "*0.01" }
     }
-    reg17739: ElecAcPhaseQualityVoltageSensor {
+    reg17739: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 43
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 43rd Harmonic"
       modbusCurAddr: { addr: "417740", encoding: "u2", scale: "*0.01" }
     }
-    reg17740: ElecAcPhaseQualityVoltageSensor {
+    reg17740: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 44
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 44th Harmonic"
       modbusCurAddr: { addr: "417741", encoding: "u2", scale: "*0.01" }
     }
-    reg17741: ElecAcPhaseQualityVoltageSensor {
+    reg17741: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 45
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 45th Harmonic"
       modbusCurAddr: { addr: "417742", encoding: "u2", scale: "*0.01" }
     }
-    reg17742: ElecAcPhaseQualityVoltageSensor {
+    reg17742: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 46
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 46th Harmonic"
       modbusCurAddr: { addr: "417743", encoding: "u2", scale: "*0.01" }
     }
-    reg17743: ElecAcPhaseQualityVoltageSensor {
+    reg17743: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 47
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 47th Harmonic"
       modbusCurAddr: { addr: "417744", encoding: "u2", scale: "*0.01" }
     }
-    reg17744: ElecAcPhaseQualityVoltageSensor {
+    reg17744: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 48
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 48th Harmonic"
       modbusCurAddr: { addr: "417745", encoding: "u2", scale: "*0.01" }
     }
-    reg17745: ElecAcPhaseQualityVoltageSensor {
+    reg17745: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 49
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 49th Harmonic"
       modbusCurAddr: { addr: "417746", encoding: "u2", scale: "*0.01" }
     }
-    reg17746: ElecAcPhaseQualityVoltageSensor {
+    reg17746: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 50
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 50th Harmonic"
       modbusCurAddr: { addr: "417747", encoding: "u2", scale: "*0.01" }
     }
-    reg17747: ElecAcPhaseQualityVoltageSensor {
+    reg17747: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 51
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 51st Harmonic"
       modbusCurAddr: { addr: "417748", encoding: "u2", scale: "*0.01" }
     }
-    reg17748: ElecAcPhaseQualityVoltageSensor {
+    reg17748: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 52
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 52nd Harmonic"
       modbusCurAddr: { addr: "417749", encoding: "u2", scale: "*0.01" }
     }
-    reg17749: ElecAcPhaseQualityVoltageSensor {
+    reg17749: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 53
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 53rd Harmonic"
       modbusCurAddr: { addr: "417750", encoding: "u2", scale: "*0.01" }
     }
-    reg17750: ElecAcPhaseQualityVoltageSensor {
+    reg17750: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 54
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 54th Harmonic"
       modbusCurAddr: { addr: "417751", encoding: "u2", scale: "*0.01" }
     }
-    reg17751: ElecAcPhaseQualityVoltageSensor {
+    reg17751: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 55
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 55th Harmonic"
       modbusCurAddr: { addr: "417752", encoding: "u2", scale: "*0.01" }
     }
-    reg17752: ElecAcPhaseQualityVoltageSensor {
+    reg17752: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 56
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 56th Harmonic"
       modbusCurAddr: { addr: "417753", encoding: "u2", scale: "*0.01" }
     }
-    reg17753: ElecAcPhaseQualityVoltageSensor {
+    reg17753: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 57
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 57th Harmonic"
       modbusCurAddr: { addr: "417754", encoding: "u2", scale: "*0.01" }
     }
-    reg17754: ElecAcPhaseQualityVoltageSensor {
+    reg17754: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 58
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 58th Harmonic"
       modbusCurAddr: { addr: "417755", encoding: "u2", scale: "*0.01" }
     }
-    reg17755: ElecAcPhaseQualityVoltageSensor {
+    reg17755: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 59
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 59th Harmonic"
       modbusCurAddr: { addr: "417756", encoding: "u2", scale: "*0.01" }
     }
-    reg17756: ElecAcPhaseQualityVoltageSensor {
+    reg17756: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 60
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 60th Harmonic"
       modbusCurAddr: { addr: "417757", encoding: "u2", scale: "*0.01" }
     }
-    reg17757: ElecAcPhaseQualityVoltageSensor {
+    reg17757: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 61
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 61st Harmonic"
       modbusCurAddr: { addr: "417758", encoding: "u2", scale: "*0.01" }
     }
-    reg17758: ElecAcPhaseQualityVoltageSensor {
+    reg17758: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 62
       individualHarmonicDistortion
       phase: "L2-L3"
       dis: "V23 62nd Harmonic"
       modbusCurAddr: { addr: "417759", encoding: "u2", scale: "*0.01" }
     }
-    reg17759: ElecAcPhaseQualityVoltageSensor {
+    reg17759: ElecAcPhaseQualityVoltageSensor? {
       elecAcHarmonicOrder: 63
       individualHarmonicDistortion
       phase: "L2-L3"
@@ -1427,27 +1427,25 @@ Acuvim2ElecAc3LLMeter : Acuvim2ElecAcMeter & ElecAc3LLMeter {
     // Phase angle (Table 6-36)
     //////////////////////////////////////////////////////////////////
 
-    reg17056: ElecAcPhaseAngleVoltageSensor {
-      notHaystack
+    reg17056: ElecAcPhaseAngleVoltageSensor? <notHaystack> {
       dis: "Phase Angle of V23 to V12"
       modbusCurAddr: { addr: "417057", encoding: "u2", scale: "*0.1" }
     }
-    reg17057: ElecAcPhaseAngleVoltageSensor {
-      notHaystack
+    reg17057: ElecAcPhaseAngleVoltageSensor? <notHaystack> {
       dis: "Phase Angle of V31 to V12"
       modbusCurAddr: { addr: "417058", encoding: "u2", scale: "*0.1" }
     }
-    reg17058: ElecAcPhaseAngleCurrentSensor {
+    reg17058: ElecAcPhaseAngleCurrentSensor? {
       phase: "L1"
       dis: "Phase Angle of I1 to V12"
       modbusCurAddr: { addr: "417059", encoding: "u2", scale: "*0.1" }
     }
-    reg17059: ElecAcPhaseAngleCurrentSensor {
+    reg17059: ElecAcPhaseAngleCurrentSensor? {
       phase: "L2"
       dis: "Phase Angle of I2 to V12"
       modbusCurAddr: { addr: "417060", encoding: "u2", scale: "*0.1" }
     }
-    reg17060: ElecAcPhaseAngleCurrentSensor {
+    reg17060: ElecAcPhaseAngleCurrentSensor? {
       phase: "L3"
       dis: "Phase Angle of I3 to V12"
       modbusCurAddr: { addr: "417061", encoding: "u2", scale: "*0.1" }
@@ -1459,46 +1457,40 @@ Acuvim2ElecAc3LLMeter : Acuvim2ElecAcMeter & ElecAc3LLMeter {
     // file.
     //////////////////////////////////////////////////////////////////
 
-    reg16827: ElecAcPhaseQualityVoltageSensor {
+    reg16827: ElecAcPhaseQualityVoltageSensor? <notHaystack> {
       totalHarmonicDistortion
       phase: "L1-L2"
       dis: "Max of THD_V1(V12)"
-      notHaystack
       modbusCurAddr: { addr: "416828", encoding: "s2", scale: "*0.01" }
     }
-    reg16834: ElecAcPhaseQualityVoltageSensor {
+    reg16834: ElecAcPhaseQualityVoltageSensor? <notHaystack> {
       totalHarmonicDistortion
       phase: "L3-L1"
       dis: "Max of THD_V2(V31)"
-      notHaystack
       modbusCurAddr: { addr: "416835", encoding: "s2", scale: "*0.01" }
     }
-    reg16841: ElecAcPhaseQualityVoltageSensor {
+    reg16841: ElecAcPhaseQualityVoltageSensor? <notHaystack> {
       totalHarmonicDistortion
       phase: "L2-L3"
       dis: "Max of THD_V3(V23)"
-      notHaystack
       modbusCurAddr: { addr: "416842", encoding: "s2", scale: "*0.01" }
     }
-    reg17002: ElecAcPhaseQualityVoltageSensor {
+    reg17002: ElecAcPhaseQualityVoltageSensor? <notHaystack> {
       totalHarmonicDistortion
       phase: "L1-L2"
       dis: "Min of THD_V1(V12)"
-      notHaystack
       modbusCurAddr: { addr: "417003", encoding: "s2", scale: "*0.01" }
     }
-    reg17009: ElecAcPhaseQualityVoltageSensor {
+    reg17009: ElecAcPhaseQualityVoltageSensor? <notHaystack> {
       totalHarmonicDistortion
       phase: "L3-L1"
       dis: "Min of THD_V2(V31)"
-      notHaystack
       modbusCurAddr: { addr: "417010", encoding: "s2", scale: "*0.01" }
     }
-    reg17016: ElecAcPhaseQualityVoltageSensor {
+    reg17016: ElecAcPhaseQualityVoltageSensor? <notHaystack> {
       totalHarmonicDistortion
       phase: "L2-L3"
       dis: "Min of THD_V3(V23)"
-      notHaystack
       modbusCurAddr: { addr: "417017", encoding: "s2", scale: "*0.01" }
     }
 
@@ -1506,220 +1498,184 @@ Acuvim2ElecAc3LLMeter : Acuvim2ElecAcMeter & ElecAc3LLMeter {
     // MAX/MIN V-THD timestamps (Table 6-34), 6 words each
     //////////////////////////////////////////////////////////////////
 
-    reg16828: NumberPoint {
+    reg16828: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V1(V12) Time stamp (Word 1)"
-      notHaystack
       modbusCurAddr: { addr: "416829", encoding: "u2" }
     }
-    reg16829: NumberPoint {
+    reg16829: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V1(V12) Time stamp (Word 2)"
-      notHaystack
       modbusCurAddr: { addr: "416830", encoding: "u2" }
     }
-    reg16830: NumberPoint {
+    reg16830: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V1(V12) Time stamp (Word 3)"
-      notHaystack
       modbusCurAddr: { addr: "416831", encoding: "u2" }
     }
-    reg16831: NumberPoint {
+    reg16831: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V1(V12) Time stamp (Word 4)"
-      notHaystack
       modbusCurAddr: { addr: "416832", encoding: "u2" }
     }
-    reg16832: NumberPoint {
+    reg16832: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V1(V12) Time stamp (Word 5)"
-      notHaystack
       modbusCurAddr: { addr: "416833", encoding: "u2" }
     }
-    reg16833: NumberPoint {
+    reg16833: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V1(V12) Time stamp (Word 6)"
-      notHaystack
       modbusCurAddr: { addr: "416834", encoding: "u2" }
     }
-    reg17003: NumberPoint {
+    reg17003: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V1(V12) Time stamp (Word 1)"
-      notHaystack
       modbusCurAddr: { addr: "417004", encoding: "u2" }
     }
-    reg17004: NumberPoint {
+    reg17004: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V1(V12) Time stamp (Word 2)"
-      notHaystack
       modbusCurAddr: { addr: "417005", encoding: "u2" }
     }
-    reg17005: NumberPoint {
+    reg17005: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V1(V12) Time stamp (Word 3)"
-      notHaystack
       modbusCurAddr: { addr: "417006", encoding: "u2" }
     }
-    reg17006: NumberPoint {
+    reg17006: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V1(V12) Time stamp (Word 4)"
-      notHaystack
       modbusCurAddr: { addr: "417007", encoding: "u2" }
     }
-    reg17007: NumberPoint {
+    reg17007: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V1(V12) Time stamp (Word 5)"
-      notHaystack
       modbusCurAddr: { addr: "417008", encoding: "u2" }
     }
-    reg17008: NumberPoint {
+    reg17008: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V1(V12) Time stamp (Word 6)"
-      notHaystack
       modbusCurAddr: { addr: "417009", encoding: "u2" }
     }
-    reg16835: NumberPoint {
+    reg16835: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V2(V31) Time stamp (Word 1)"
-      notHaystack
       modbusCurAddr: { addr: "416836", encoding: "u2" }
     }
-    reg16836: NumberPoint {
+    reg16836: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V2(V31) Time stamp (Word 2)"
-      notHaystack
       modbusCurAddr: { addr: "416837", encoding: "u2" }
     }
-    reg16837: NumberPoint {
+    reg16837: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V2(V31) Time stamp (Word 3)"
-      notHaystack
       modbusCurAddr: { addr: "416838", encoding: "u2" }
     }
-    reg16838: NumberPoint {
+    reg16838: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V2(V31) Time stamp (Word 4)"
-      notHaystack
       modbusCurAddr: { addr: "416839", encoding: "u2" }
     }
-    reg16839: NumberPoint {
+    reg16839: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V2(V31) Time stamp (Word 5)"
-      notHaystack
       modbusCurAddr: { addr: "416840", encoding: "u2" }
     }
-    reg16840: NumberPoint {
+    reg16840: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V2(V31) Time stamp (Word 6)"
-      notHaystack
       modbusCurAddr: { addr: "416841", encoding: "u2" }
     }
-    reg17010: NumberPoint {
+    reg17010: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V2(V31) Time stamp (Word 1)"
-      notHaystack
       modbusCurAddr: { addr: "417011", encoding: "u2" }
     }
-    reg17011: NumberPoint {
+    reg17011: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V2(V31) Time stamp (Word 2)"
-      notHaystack
       modbusCurAddr: { addr: "417012", encoding: "u2" }
     }
-    reg17012: NumberPoint {
+    reg17012: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V2(V31) Time stamp (Word 3)"
-      notHaystack
       modbusCurAddr: { addr: "417013", encoding: "u2" }
     }
-    reg17013: NumberPoint {
+    reg17013: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V2(V31) Time stamp (Word 4)"
-      notHaystack
       modbusCurAddr: { addr: "417014", encoding: "u2" }
     }
-    reg17014: NumberPoint {
+    reg17014: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V2(V31) Time stamp (Word 5)"
-      notHaystack
       modbusCurAddr: { addr: "417015", encoding: "u2" }
     }
-    reg17015: NumberPoint {
+    reg17015: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V2(V31) Time stamp (Word 6)"
-      notHaystack
       modbusCurAddr: { addr: "417016", encoding: "u2" }
     }
-    reg16842: NumberPoint {
+    reg16842: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V3(V23) Time stamp (Word 1)"
-      notHaystack
       modbusCurAddr: { addr: "416843", encoding: "u2" }
     }
-    reg16843: NumberPoint {
+    reg16843: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V3(V23) Time stamp (Word 2)"
-      notHaystack
       modbusCurAddr: { addr: "416844", encoding: "u2" }
     }
-    reg16844: NumberPoint {
+    reg16844: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V3(V23) Time stamp (Word 3)"
-      notHaystack
       modbusCurAddr: { addr: "416845", encoding: "u2" }
     }
-    reg16845: NumberPoint {
+    reg16845: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V3(V23) Time stamp (Word 4)"
-      notHaystack
       modbusCurAddr: { addr: "416846", encoding: "u2" }
     }
-    reg16846: NumberPoint {
+    reg16846: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V3(V23) Time stamp (Word 5)"
-      notHaystack
       modbusCurAddr: { addr: "416847", encoding: "u2" }
     }
-    reg16847: NumberPoint {
+    reg16847: NumberPoint? <notHaystack> {
       sensor
       dis: "Max of THD_V3(V23) Time stamp (Word 6)"
-      notHaystack
       modbusCurAddr: { addr: "416848", encoding: "u2" }
     }
-    reg17017: NumberPoint {
+    reg17017: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V3(V23) Time stamp (Word 1)"
-      notHaystack
       modbusCurAddr: { addr: "417018", encoding: "u2" }
     }
-    reg17018: NumberPoint {
+    reg17018: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V3(V23) Time stamp (Word 2)"
-      notHaystack
       modbusCurAddr: { addr: "417019", encoding: "u2" }
     }
-    reg17019: NumberPoint {
+    reg17019: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V3(V23) Time stamp (Word 3)"
-      notHaystack
       modbusCurAddr: { addr: "417020", encoding: "u2" }
     }
-    reg17020: NumberPoint {
+    reg17020: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V3(V23) Time stamp (Word 4)"
-      notHaystack
       modbusCurAddr: { addr: "417021", encoding: "u2" }
     }
-    reg17021: NumberPoint {
+    reg17021: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V3(V23) Time stamp (Word 5)"
-      notHaystack
       modbusCurAddr: { addr: "417022", encoding: "u2" }
     }
-    reg17022: NumberPoint {
+    reg17022: NumberPoint? <notHaystack> {
       sensor
       dis: "Min of THD_V3(V23) Time stamp (Word 6)"
-      notHaystack
       modbusCurAddr: { addr: "417023", encoding: "u2" }
     }
   }
