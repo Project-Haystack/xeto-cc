@@ -74,7 +74,7 @@ IsmaVav14 : Vav {
     ModelSeriesAttr { val: "VAV14-IP" }
   }
 
-  resources: List<of:File> {
+  resources: List? <of:File> {
     PdfFile {
       dis: "VAV14-IP Software User Manual"
       uri: "https://support.ismacontrolli.com/04%20Comfort%20Management/VAV14-IP/Manuals/VAV14-IP_Software_Manual_DMP305en_V1.4.0.pdf"
