@@ -7,43 +7,6 @@
 //
 
 //////////////////////////////////////////////////////////////////////////
-// Local Enum Types
-//////////////////////////////////////////////////////////////////////////
-
-OccupancyStatusEnum : Enum { occupied, unoccupied, bypass, standby }
-OccupancyModeEnum : Enum { occupied, unoccupied, bypass, standby }
-PanelOccupancyStatusEnum : Enum { unoccupied, occupied, standby, bypass }
-TempSensorTypeEnum : Enum {
-  voltage, current, resistance, ntc10k3a1, ntc10k4a1, ntc10kCarel,
-  ntc20k6a1, ntc2_2k3a1, ntc3k3a1, ntc30k6a1, sie1, tac1, sat1, pt1000,
-  ni1000, ni1000_21c, ni1000LgF, ntc10kType2F, ntc10kType3F, ntc20kF,
-  ntc3kF, pt1000F, ni1000_32F, ni1000_70F
-}
-TemperatureInputSelectorEnum : Enum { panel, input, network }
-SetpointOffsetSelectorEnum : Enum { panel, input, network }
-Co2InputSelectorEnum : Enum { panel, input, network }
-HvacModeEnum : Enum {
-  auto, heat, morningWarmUp, cool, nightPurge, preCool, off, fire
-}
-HvacStatusEnum : Enum {
-  occupiedCooling, occupiedHeating, standbyCooling, standbyHeating,
-  unoccupiedCooling, unoccupiedHeating, off, fire
-}
-DamperCommandModeEnum : Enum {
-  auto, maxFlow, minFlow, userFlow, userPosition, fullOpen, fullClose,
-  calibrate
-}
-FanCommandModeEnum : Enum { auto, maxSpeed, minSpeed, stop }
-ReheaterCommandModeEnum : Enum { auto, fullOpen, fullClose }
-HeaterPriorityEnum : Enum { reheater, perimeter, simultaneous }
-ReheaterStatusEnum : Enum { off, stage1, stage2 }
-PerimeterCommandModeEnum : Enum { auto, fullOpen, fullClose }
-PerimeterTypeEnum : Enum { none, timeProp, digital }
-ReheaterTypeEnum : Enum { none, timeProp, staged, float }
-FanTypeEnum : Enum { none, series, parallel }
-PanelFanStatusEnum : Enum { off, speed1, speed2, speed3 }
-
-//////////////////////////////////////////////////////////////////////////
 // Main Device Model
 //////////////////////////////////////////////////////////////////////////
 
@@ -1202,3 +1165,40 @@ IsmaVav14 : Vav {
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////////
+// Local Enum Types
+//////////////////////////////////////////////////////////////////////////
+
+OccupancyStatusEnum : Enum { occupied, unoccupied, bypass, standby }
+OccupancyModeEnum : Enum { occupied, unoccupied, bypass, standby }
+PanelOccupancyStatusEnum : Enum { unoccupied, occupied, standby, bypass }
+TempSensorTypeEnum : Enum {
+  voltage, current, resistance, ntc10k3a1, ntc10k4a1, ntc10kCarel,
+  ntc20k6a1, ntc2_2k3a1, ntc3k3a1, ntc30k6a1, sie1, tac1, sat1, pt1000,
+  ni1000, ni1000_21c, ni1000LgF, ntc10kType2F, ntc10kType3F, ntc20kF,
+  ntc3kF, pt1000F, ni1000_32F, ni1000_70F
+}
+TemperatureInputSelectorEnum : Enum { panel, input, network }
+SetpointOffsetSelectorEnum : Enum { panel, input, network }
+Co2InputSelectorEnum : Enum { panel, input, network }
+HvacModeEnum : Enum {
+  auto, heat, morningWarmUp, cool, nightPurge, preCool, off, fire
+}
+HvacStatusEnum : Enum {
+  occupiedCooling, occupiedHeating, standbyCooling, standbyHeating,
+  unoccupiedCooling, unoccupiedHeating, off, fire
+}
+DamperCommandModeEnum : Enum {
+  auto, maxFlow, minFlow, userFlow, userPosition, fullOpen, fullClose,
+  calibrate
+}
+FanCommandModeEnum : Enum { auto, maxSpeed, minSpeed, stop }
+ReheaterCommandModeEnum : Enum { auto, fullOpen, fullClose }
+HeaterPriorityEnum : Enum { reheater, perimeter, simultaneous }
+ReheaterStatusEnum : Enum { off, stage1, stage2 }
+PerimeterCommandModeEnum : Enum { auto, fullOpen, fullClose }
+PerimeterTypeEnum : Enum { none, timeProp, digital }
+ReheaterTypeEnum : Enum { none, timeProp, staged, float }
+FanTypeEnum : Enum { none, series, parallel }
+PanelFanStatusEnum : Enum { off, speed1, speed2, speed3 }
