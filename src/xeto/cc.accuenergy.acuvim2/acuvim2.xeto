@@ -9,151 +9,6 @@
 //
 
 //////////////////////////////////////////////////////////////////////////
-// Local Enum Types
-//////////////////////////////////////////////////////////////////////////
-
-AcuvimAlarmParameterEnum : Enum {
-  freq, va, vb, vc, avgPhaseVoltage, uab,
-  ubc, uca, avgLineVoltage, currentA, currentB, currentC,
-  avgCurrent, neutralCurrent, powerA, powerB, powerC, powerAll,
-  reactivePowerA, reactivePowerB, reactivePowerC, reactivePowerAll, apparentPowerA, apparentPowerB,
-  apparentPowerC, apparentPowerAll, pfA, pfB, pfC, pf,
-  voltageUnbalance, currentUnbalance, loadCharacteristic, thdV1, thdV2, thdV3,
-  avgThdV, thdI1, thdI2, thdI3, avgThdI, ai1SamplingValue,
-  ai2SamplingValue, ai3SamplingValue, ai4SamplingValue, activePowerDemandAll, reactivePowerDemandAll, apparentPowerDemandAll,
-  currentDemandA, currentDemandB, currentDemandC, reversedPhaseSequence, di1, di2,
-  di3, di4, di5, di6, di7, di8,
-  di9, di10, di11, di12, di13, di14,
-  di15, di16, di17, di18, di19, di20,
-  di21, di22, di23, di24, di25, di26,
-  di27, di28
-}
-
-AcuvimIoModuleEnum : Enum {
-  none, axmIo11, axmIo21, axmIo31, axmIo12, axmIo22, axmIo32
-}
-
-AcuvimFrequencyEnum : Enum {
-  hz50, hz60
-}
-
-// Table 6-15 prints "0: Modbus, 2: BACnet MS/TP" for this register, but
-// the note on the following page states "When the register 0FFEH is 1,
-// the channel 1 communication protocol is set to BACnet" -- trusting
-// the note (deliberate clarifying prose) over the table.
-AcuvimCommProtocolEnum : Enum {
-  modbus, bacnet
-}
-
-AcuvimParityEnum : Enum {
-  even, odd, non2, non1
-}
-
-AcuvimVoltageWiringEnum : Enum {
-  threeLN, oneLN, twoLL, threeLL, oneLL
-}
-
-AcuvimCurrentWiringEnum : Enum {
-  threeCt, oneCt, twoCt
-}
-
-AcuvimDemandCalcModeEnum : Enum {
-  fixedWindow, slidingWindow, thermal, rollingWindow
-}
-
-AcuvimDirectionEnum : Enum {
-  positive, negative
-}
-
-AcuvimLineNCurrentMethodEnum : Enum {
-  calculated, measured
-}
-
-AcuvimLoadCharacteristicBasisEnum : Enum {
-  current, power
-}
-
-AcuvimVarPfConventionEnum : Enum {
-  iec, ieee
-}
-
-AcuvimEnergyCalcModeEnum : Enum {
-  fundamental, fullWave
-}
-
-AcuvimReactivePowerModeEnum : Enum {
-  real, general
-}
-
-AcuvimEnergyDisplayModeEnum : Enum {
-  primary, secondary, primaryIn01kWh
-}
-
-AcuvimBasicParameterModeEnum : Enum {
-  secondary, primary
-}
-
-AcuvimEthernetResetEnum : Enum {
-  none, reset, loadDefaultAndReset
-}
-
-AcuvimDisableEnableEnum : Enum {
-  disable, enable
-}
-
-AcuvimDstFormatEnum : Enum {
-  format1, format2
-}
-
-AcuvimLogModeEnum : Enum {
-  fifoContinuous, startEndTime, startTimeOnly
-}
-
-AcuvimWaveformSampleRateEnum : Enum {
-  points64, points128
-}
-
-AcuvimSagSwellConditionEnum : Enum {
-  disabled, sag, swell
-}
-
-AcuvimPhaseSelectionEnum : Enum {
-  none, physicalWiringIa, physicalWiringIb, physicalWiringIc, physicalWiringIn
-}
-
-AcuvimVoltageSelectionEnum : Enum {
-  disable, va, vb, vc, vab, vbc, vca
-}
-
-AcuvimRoTypeModeEnum : Enum {
-  relay, alarm
-}
-
-AcuvimRoControlModeEnum : Enum {
-  latch, momentary, manual
-}
-
-AcuvimDoModeEnum : Enum {
-  energyPulseOutput, alarmingOutput
-}
-
-AcuvimDoParameterEnum : Enum {
-  none, importActivePower, exportActivePower, importReactivePower, exportReactivePower
-}
-
-AcuvimAoAiTypeEnum : Enum {
-  range0to20mA, range4to20mA, range0to5V, range1to5V
-}
-
-AcuvimAoParameterEnum : Enum {
-  freq, va, vb, vc, avgPhaseVoltage, vab,
-  vbc, vca, avgLineVoltage, currentA, currentB, currentC,
-  avgCurrent, neutralCurrent, powerA, powerB, powerC, powerAll,
-  reactivePowerA, reactivePowerB, reactivePowerC, reactivePowerAll, apparentPowerA, apparentPowerB,
-  apparentPowerC, apparentPowerAll, pfA, pfB, pfC, pf
-}
-
-//////////////////////////////////////////////////////////////////////////
 // Main Device Model
 //////////////////////////////////////////////////////////////////////////
 
@@ -25915,4 +25770,149 @@ Acuvim2ElecAcMeter : AcElecMeter <abstract> {
       modbusWriteAddr: { addr: "405177", encoding: "u2" }
     }
   }
+}
+
+//////////////////////////////////////////////////////////////////////////
+// Local Enum Types
+//////////////////////////////////////////////////////////////////////////
+
+AcuvimAlarmParameterEnum : Enum {
+  freq, va, vb, vc, avgPhaseVoltage, uab,
+  ubc, uca, avgLineVoltage, currentA, currentB, currentC,
+  avgCurrent, neutralCurrent, powerA, powerB, powerC, powerAll,
+  reactivePowerA, reactivePowerB, reactivePowerC, reactivePowerAll, apparentPowerA, apparentPowerB,
+  apparentPowerC, apparentPowerAll, pfA, pfB, pfC, pf,
+  voltageUnbalance, currentUnbalance, loadCharacteristic, thdV1, thdV2, thdV3,
+  avgThdV, thdI1, thdI2, thdI3, avgThdI, ai1SamplingValue,
+  ai2SamplingValue, ai3SamplingValue, ai4SamplingValue, activePowerDemandAll, reactivePowerDemandAll, apparentPowerDemandAll,
+  currentDemandA, currentDemandB, currentDemandC, reversedPhaseSequence, di1, di2,
+  di3, di4, di5, di6, di7, di8,
+  di9, di10, di11, di12, di13, di14,
+  di15, di16, di17, di18, di19, di20,
+  di21, di22, di23, di24, di25, di26,
+  di27, di28
+}
+
+AcuvimIoModuleEnum : Enum {
+  none, axmIo11, axmIo21, axmIo31, axmIo12, axmIo22, axmIo32
+}
+
+AcuvimFrequencyEnum : Enum {
+  hz50, hz60
+}
+
+// Table 6-15 prints "0: Modbus, 2: BACnet MS/TP" for this register, but
+// the note on the following page states "When the register 0FFEH is 1,
+// the channel 1 communication protocol is set to BACnet" -- trusting
+// the note (deliberate clarifying prose) over the table.
+AcuvimCommProtocolEnum : Enum {
+  modbus, bacnet
+}
+
+AcuvimParityEnum : Enum {
+  even, odd, non2, non1
+}
+
+AcuvimVoltageWiringEnum : Enum {
+  threeLN, oneLN, twoLL, threeLL, oneLL
+}
+
+AcuvimCurrentWiringEnum : Enum {
+  threeCt, oneCt, twoCt
+}
+
+AcuvimDemandCalcModeEnum : Enum {
+  fixedWindow, slidingWindow, thermal, rollingWindow
+}
+
+AcuvimDirectionEnum : Enum {
+  positive, negative
+}
+
+AcuvimLineNCurrentMethodEnum : Enum {
+  calculated, measured
+}
+
+AcuvimLoadCharacteristicBasisEnum : Enum {
+  current, power
+}
+
+AcuvimVarPfConventionEnum : Enum {
+  iec, ieee
+}
+
+AcuvimEnergyCalcModeEnum : Enum {
+  fundamental, fullWave
+}
+
+AcuvimReactivePowerModeEnum : Enum {
+  real, general
+}
+
+AcuvimEnergyDisplayModeEnum : Enum {
+  primary, secondary, primaryIn01kWh
+}
+
+AcuvimBasicParameterModeEnum : Enum {
+  secondary, primary
+}
+
+AcuvimEthernetResetEnum : Enum {
+  none, reset, loadDefaultAndReset
+}
+
+AcuvimDisableEnableEnum : Enum {
+  disable, enable
+}
+
+AcuvimDstFormatEnum : Enum {
+  format1, format2
+}
+
+AcuvimLogModeEnum : Enum {
+  fifoContinuous, startEndTime, startTimeOnly
+}
+
+AcuvimWaveformSampleRateEnum : Enum {
+  points64, points128
+}
+
+AcuvimSagSwellConditionEnum : Enum {
+  disabled, sag, swell
+}
+
+AcuvimPhaseSelectionEnum : Enum {
+  none, physicalWiringIa, physicalWiringIb, physicalWiringIc, physicalWiringIn
+}
+
+AcuvimVoltageSelectionEnum : Enum {
+  disable, va, vb, vc, vab, vbc, vca
+}
+
+AcuvimRoTypeModeEnum : Enum {
+  relay, alarm
+}
+
+AcuvimRoControlModeEnum : Enum {
+  latch, momentary, manual
+}
+
+AcuvimDoModeEnum : Enum {
+  energyPulseOutput, alarmingOutput
+}
+
+AcuvimDoParameterEnum : Enum {
+  none, importActivePower, exportActivePower, importReactivePower, exportReactivePower
+}
+
+AcuvimAoAiTypeEnum : Enum {
+  range0to20mA, range4to20mA, range0to5V, range1to5V
+}
+
+AcuvimAoParameterEnum : Enum {
+  freq, va, vb, vc, avgPhaseVoltage, vab,
+  vbc, vca, avgLineVoltage, currentA, currentB, currentC,
+  avgCurrent, neutralCurrent, powerA, powerB, powerC, powerAll,
+  reactivePowerA, reactivePowerB, reactivePowerC, reactivePowerAll, apparentPowerA, apparentPowerB,
+  apparentPowerC, apparentPowerAll, pfA, pfB, pfC, pf
 }
